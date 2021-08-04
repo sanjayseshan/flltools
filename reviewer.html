@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>FLL Explore Review Sheet</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=0.01, maximum-scale=1.0, user-scalable=yes" />
+    <!-- <meta name="viewport" content="width=1024, initial-scale=.4, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes"> -->
+
+    <meta name="color-scheme" content="light dark" />
+
+    <script src="assets/js/jquery-1.11.3.min.js"></script>
+
+
+    <script>
+        $(document).bind('mobileinit', function () {
+            $.mobile.changePage.defaults.changeHash = false;
+            $.mobile.hashListeningEnabled = false;
+            $.mobile.pushStateEnabled = false;
+        });
+
+        language = "en"
+    </script>
+    <!-- <script src="assets/js/highcharts.js"></script>
+  <script src="assets/js/exporting.js"></script> -->
+    <!-- <script src="assets/js/scorer.js"></script> -->
+    <script src="assets/js/timers.js"></script>
+    <script src="assets/js/exploreRubricSaver.js"></script>
+    <script src="assets/js/html.js"></script>
+    <script src="assets/js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="assets/js/download.js"></script>
+
+    <script type="text/javascript" src="assets/js/jqm-spinbox.min.js"></script>
+
+
+
+
+
+    <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.5.min.css">
+    <!--    <link rel="stylesheet" href="assets/css/tournament.css"> -->
+    <link rel="stylesheet" href="assets/css/jquery.mobile.icons.min.css" />
+    <!-- <link rel="stylesheet" href="assets/css/scorer.min.css" /> -->
+
+    <style>
+        .no-mobile {
+            display: inline;
+        }
+
+        .only-mobile {
+            /* display: none; */
+        }
+
+        .highcharts-button {
+            display: none;
+        }
+
+        .only-print,
+        .only-print * {
+            display: none !important;
+        }
+
+        @media print {
+
+            .no-print,
+            .no-print * {
+                display: none !important;
+            }
+
+            .rbtd {
+                font-size: 70% !important;
+            }
+
+            label {
+                font-size: 70% !important;
+            }
+
+            .only-print,
+            .only-print * {
+                display: block !important;
+            }
+
+            body {
+                width: 800px;
+                height: 100%;
+            }
+        }
+
+        @page {
+            size: A4 portrait;
+            margin: 0.5cm;
+        }
+
+        a:link img {
+            opacity: 1.0;
+            filter: alpha(opacity=100);
+            /* For IE8 and earlier */
+            filter: alpha(opacity=60);
+            /* For IE8 and earlier */
+            transition: opacity .5s ease-in-out;
+            -moz-transition: opacity .5s ease-in-out;
+            -webkit-transition: opacity .5s ease-in-out;
+        }
+
+        a:hover img {
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+            /* For IE8 and earlier */
+            transition: opacity .5s ease-in-out;
+            -moz-transition: opacity .5s ease-in-out;
+            -webkit-transition: opacity .5s ease-in-out;
+        }
+
+        table tr td {
+            padding-left: 0px;
+            padding-right: 0px;
+            border-collapse: collapse;
+            /* border: 1px solid black; */
+            margin: 5px;
+        }
+
+        .rbtd {
+            border: 1px solid black !important;
+            padding-top: 3px;
+            padding-right: 3px;
+            padding-bottom: 3px;
+            padding-left: 3px;
+        }
+
+        /* @media(max-width: 1067px) {
+            .rbtd {
+                font-size: 80% !important;
+            }
+            label {
+                font-size: 80% !important;
+            }
+        } */
+
+        /* @media(max-width: 605px) {
+            .rbtd {
+                font-size: 60% !important;
+            }
+            label {
+                font-size: 60% !important;
+            }
+        }
+        
+        @media(max-width: 413px) {
+            .rbtd {
+                font-size: 50% !important;
+            }
+            label {
+                font-size: 50% !important;
+            }
+        } */
+        /* #missionlist {
+      width: auto;
+      -webkit-column-width: 325px;
+      -moz-column-width: 325px;
+      column-width: 325px;
+      -webkit-column-count: 3;
+      -moz-column-count: 3;
+      column-count: 3;
+      -webkit-column-gap: 0;
+      -moz-column-gap: 0;
+      column-gap: 0;
+
+    } */
+
+        .missionFmt {
+            padding-right: 3;
+            padding-left: 0;
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        table {
+            border-collapse: separate;
+            border: solid black 1px;
+            border-radius: 6px;
+            -moz-border-radius: 6px;
+        }
+
+        td,
+        th {
+            /* border-left:solid black 1px; */
+            /* border-top:solid black 1px; */
+        }
+
+        td {
+            /* background-color: blue; */
+            border-top: none !important;
+        }
+
+        td:first-child,
+        td:first-child {
+            border-left: none;
+        }
+    </style>
+    <script src="assets/languages.js"></script>
+
+    <script src="assets/js/language-detector.js">
+    </script>
+
+
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#1976d2">
+</head>
+
+
+
+<body id="wholeBody">
+
+    <!-- start drawplan-->
+
+
+
+    <!--end drawplan-->
+
+
+    <img src="assets/images/ajax-loader.gif" id="loadingGif"
+        style="background-color:white; width:100px; height: auto;position:fixed;left:50%;top:50%;margin-left: -50px;margin-top:-50px;z-index:10000000000000000000000000000000000000000;">
+
+    <div id="contentload" style="display: none;">
+        <div class="no-print"><br><br></div>
+        <a href="index.html" class="no-print" id="homebtn" data-icon="home" data-ajax="false" data-role="button"
+            style="max-width:100px;">Home</a><br>
+
+        <table class="no-print"
+            style="width:98%; text-align:center; margin-left:auto; margin-right:auto;border:none!important;">
+            <tr>
+                <td style="width:25%; text-align:left">
+                    <script>
+                        var page = '';
+                        //              var page = window.location.href.split("?")[0].split("#")[0] + '?lang=';
+                        var i;
+                        for (i = 0; i < langs.length; i++) {
+                            window[langs[i].split(':')[0].split('-')[0]] = page + langs[i].split(':')[0];
+                        }
+                        var i;
+                        for (i = 0; i < langs.length; i++) {
+                            document.write('\
+              <a class="no-print" data-ajax="false" href="" onclick="createCookie(\'' + langs[i].split(":")[0] + '\');language=\'' + window[langs[i].split(":")[0].split("-")[0]] + '\';initpage();" style=" text-decoration: none">\
+              <img src="assets/images/icons/countries/small/' + langs[i].split(":")[1] + '.png" alt="' + langs[i].split(":")[2] + '" title="' + langs[i].split(":")[2] + '" width="26" height="26" border="0">\
+              </a>\
+              ')
+                        }
+                    </script>
+
+                </td>
+
+                <script>
+                    function getParameterByName(name, url) {
+                        if (!url) url = window.location.href;
+                        name = name.replace(/[\[\]]/g, "\\$&");
+                        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                            results = regex.exec(url);
+                        if (!results) return null;
+                        if (!results[2]) return '';
+                        return decodeURIComponent(results[2].replace(/\+/g, " "));
+                    }
+
+                    if (getParameterByName('team') != null) {
+                        // document.getElementById('team_num').value = getParameterByName('team')
+                    }
+                </script>
+
+                <td style="width:50%; font-size:24px; text-align:center">
+                    <b class="no-print" id="title">FIRST(R) LEGO(R) League Explore<br> Judging Rubrics (2020-21)</b>
+                </td>
+                <td style="width:25%; font-size:12px; text-align:right">
+                    <img class="only-mobile" alt="FLL Tutorials" style="border:0px solid #021a40;"
+                        src="assets/images/flltutorials.png" width="139">
+                </td>
+            </tr>
+        </table>
+
+
+
+        <!-- <div role="main" class="ui-content" style="padding-right:0; padding-left:0"> -->
+        <div data-role="tabs">
+
+
+            <div id="tabs-1">
+                <form>
+
+                    <div id="cvlist" style="max-width: 1024px;overflow-x: auto;">
+                        <script src="assets/rubric.js"></script>
+
+                    </div>
+                    <button class="no-print" onclick="setTimeout(function()
+        {
+          rubricCalc()
+    
+        }, 100);" style="max-width: 500px" type="reset">Reset</button>
+                </form>
+                <br><br>
+            </div>
+
+
+
+            <div id="tabs-4" class="no-print">
+
+                <div style="max-width:500px">
+
+                    <button type="button"
+                        onclick="saverRB();maximumRB = window.localStorage.DRERBSscorer.split('&&&').length-1">Save
+                        Rubric</button>
+
+                    <br>
+                    <style>
+                        input[type=number]::-webkit-outer-spin-button,
+                        input[type=number]::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                        }
+
+                        input[type=number] {
+                            -moz-appearance: textfield;
+                        }
+                    </style>
+
+                    <script>
+                        if (window.localStorage.DRERBSscorer != undefined) {
+                            maximumRB = window.localStorage.DRERBSscorer.split('&&&').length - 1;
+                            min = 1;
+                            start = 1;
+                        } else {
+                            maximumRB = 0
+                            min = 0
+                            start = 0
+                        }
+                    </script>
+                    <div class="ui-grid-b ui-responsive">
+                        <div style="width: 170" class="ui-block-a" align="left">
+                            <div class="button-wrap">
+                                <button style="text-align: left;" id="loadText" class="ui-shadow ui-btn ui-corner-all"
+                                    type="button" onclick="loaderRB(document.getElementById('saveidRB').value)">Load
+                                    Rubric No.</button>
+                            </div>
+
+                        </div>
+                        <!--
+                <div style="max-width: 60px; " class="ui-block-b">
+  
+                  <div data-role="stepper" data-direction="vertical">
+  
+                    <div style="max-width: 60px; " class="button-wrap">
+                      <input type="button" value="-"
+                        onclick="document.getElementById('saveid').value--;  if (document.getElementById('saveid').value < 1) {document.getElementById('saveid').value = 1}">
+                    </div>
+                  </div>
+                </div>
+                <div class="ui-block-c" style="max-width: 60px; ">
+                  <div style="max-width: 60px;" class="button-wrap">
+                    <input style="height: 41px" type="number" data-highlight="true" data-theme="b"
+                      onchange=" if (this.value > maximum) {this.value = maximum}" search="2" class="quantity"
+                      data-show-value="true" name="saveid" id="saveid" value="1" min="1" step="1">
+                  </div>
+                </div>
+                <div class="ui-block-d" style="max-width: 60px; ">
+                  <div style="max-width: 60px; " class="button-wrap">
+                    <input type="button" value="+"
+                      onclick="document.getElementById('saveid').value++; if (document.getElementById('saveid').value > maximum) {document.getElementById('saveid').value = maximum}">
+                  </div>
+                </div>
+              -->
+                        <input id="saveidRB" type="text" data-inline="true" data-role="spinbox"
+                            onchange="if (this.value > maximumRB) {this.value = maximumRB} " min="1" value="0">
+
+                        <!--       </div>
+         </div>-->
+
+                    </div>
+                    <button class="ui-button ui-widget ui-corner-all" type="button"
+                        onclick="window.localStorage.DRERBSscorer = '';window.localStorage.DRERBS2scorer='';alert('Deleted all Saves. Please refresh this page.')">Delete
+                        all Rubrics</button>
+
+                    <div>
+                        <br><br>
+                        <button class="ui-mini no-mobile" onclick=" document.getElementById('fileInputRB').click() ;
+                 maximumRB = window.localStorage.DRERBSscorer.split('&&&').length-1;">Import Shared Rubrics</button>
+
+                        <input onchange="setTimeout(function(){
+           document.getElementById('saveidRB').max = window.localStorage.DRERBSscorer.split('&&&').length-1;},300)"
+                            style=" position: fixed;
+        bottom: -10000px;
+        left: -100000px;" type="file" accept=".DRERB" id="fileInputRB">
+
+
+                        <button class="ui-mini no-mobile"
+                            onclick="download(window.localStorage.DRERBSscorer, day+'mysaves.DRERB','application/octet-stream')">Share
+                            Rubrics</button>
+
+                        <script type="text/javascript">
+
+
+
+                            var currentTime = new Date()
+                            var day = currentTime.getDate()
+                        </script>
+
+                        <h3>Past Rubrics:</h3>
+                        <div id="pastRB">
+
+                        </div>
+                        <br><br><br>
+                        <br><br><br>
+                        <div class="ui-corner-all ui-shadow-inset no-mobile"
+                            style="border:1px solid black;max-width:500px">
+
+                            <div style="margin: 10px;">
+
+                                <h3>Advanced</h3>
+                                <table style="padding-left: 10px; ">
+                                    <tr>
+                                        <td>
+                                            <div style="max-width: 100px">
+                                                <text id="teamText"> Team No.</text>: <input value="0" id="team_num"
+                                                    type="number">
+                                            </div>
+                                        </td>
+                                        <td colspan="2">
+                                            <div style="max-width: 500px">
+                                                <text id="nameText">Your Name</text>: <input id="name" type="text">
+                                            </div>
+                                        </td>
+
+                                        <!-- <tr>
+                                <td colspan="2">
+                                    <div style="max-width: 500px">
+                                        <text id="roleText">Role</text>: 
+                                        <select data-role="none" id="role">
+                                            <option value=""></option>
+                                            <option value="TM">Team</option>
+                                            <option value="RF">Referee</option>
+                                            <option value="HR">Head Referee</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr> -->
+                                </table>
+
+                                <div style="max-width:300px">
+                                    <iframe style="display: none;" id="saveframe"></iframe>
+
+                                    <button onclick="downloadScore();" id="saverTscorer" type="button">Download Current
+                                        Rubric</button>
+
+                                    <text>Load Local Rubric:</text> <input onchange="" type="file" accept=".TDRERB"
+                                        id="fileInputT">
+                                    <!-- position: fixed;
+                            bottom: -10000px;
+                            left: -100000px; -->
+                                    <!-- <button id="importText" class="ui-mini no-mobile" onclick=" document.getElementById('fileInputT').click()">Load Score</button> -->
+
+                                    <script>
+                                        var fileInputT = document.getElementById('fileInputT');
+
+                                        fileInputT.addEventListener('change', function (e) {
+                                            var file = fileInputT.files[0];
+                                            var textType = /text.*/;
+
+                                            var reader = new FileReader();
+
+                                            reader.onload = function (e) {
+                                                data = reader.result;
+                                                //alert(data)
+
+                                                loadScore(data)
+                                                loadScore(data)
+                                            }
+
+                                            reader.readAsText(file);
+
+                                        });
+
+
+
+                                        function downloadScore() {
+                                            var currentTime = new Date()
+                                            var day = currentTime.getDate()
+
+                                            name = document.getElementById("name").value
+                                            // role = document.getElementById("role").value
+                                            role = "RP"
+
+                                            team = document.getElementById("team_num").value
+                                            teamSV = (parseInt(document.getElementById("team_num").value)).toLocaleString('en-US', { minimumIntegerDigits: 8, useGrouping: false })
+                                            round = 0
+                                            score = getRBSaveStr()
+                                            points = (parseInt(document.getElementById("cvpts").innerHTML)).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+
+                                            year = (new Date()).getUTCFullYear()
+                                            month = ((new Date()).getUTCMonth() + 1).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+                                            day = ((new Date()).getUTCDate()).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+
+                                            hours = ((new Date()).getUTCHours()).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+                                            minutes = ((new Date()).getUTCMinutes()).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+                                            seconds = ((new Date()).getUTCSeconds()).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+
+                                            time = year + "-" + month + "-" + day + "_" + hours + minutes + seconds
+                                            person = role + "-" + name
+                                            match = "team-" + teamSV
+
+                                            filename = match + "_" + time + "_round-" + round + "_score-" + points + "_" + person + ".TDRERB"
+
+                                            data = team + ";" + round + ";" + score + ";" + role + ";" + name + ";" + filename
+                                            // filename = "team-"+document.getElementById("team_num").value+"_round-"+document.getElementById("round_num").value+"_score-"+document.getElementById("allpoints").innerHTML+"_"+currentTime+".TDRRP"
+
+                                            download(data, filename, "txt")
+                                        }
+
+
+                                        function loadScore(save) {
+                                            console.log(save)
+                                            data = save.split(";")
+                                            console.log(data)
+                                            team = data[0]
+                                            round = data[1]
+                                            load = data[2]
+                                            role = data[3]
+                                            name = data[4]
+                                            document.getElementById("name").value = name
+                                            // document.getElementById("role").value = role
+                                            document.getElementById("team_num").value = team
+                                            // document.getElementById("round_num").value = round
+                                            loadRBsave(load)
+                                            alert(loadedText)
+
+                                        }
+
+
+
+                                    </script>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+        <noscript>Please enable JavaScript to continue using this application.</noscript>
+        <div style="padding-left: 10px; " class="no-print">
+
+            <!--  <text id="tournamentText">Tournament</text><br><br>-->
+
+            <text id="revisionText">Rubrics v1.0.1 (FLL Explore v1.0)
+                (Scorer </text> <text id="versionText">v3.6.0</text>
+            <!-- <br>Using for competition? Check out the modified version <a data-role="none" data-ajax="false" -->
+            <!-- href="index-download.html">here</a> that allows you to download each rubric. -->
+            <!-- Scorer v3.6.0 -->
+            <!--version 1.0.1-->
+            <br>
+            <br><text id="copyrightText">Copyright (c) FLLTutorials.com</text><br>
+            <br>
+            <text id="translatorCredit"></text>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <script src="runtime-es2015.js" type="module"></script>
+    <script src="runtime-es5.js" nomodule defer></script>
+    <script src="polyfills-es5.js" nomodule defer></script>
+    <script src="polyfills-es2015.js" type="module"></script>
+    <script src="styles-es2015.js" type="module"></script>
+    <script src="styles-es5.js" nomodule defer></script>
+    <script src="vendor-es2015.js" type="module"></script>
+    <script src="vendor-es5.js" nomodule defer></script>
+    <script src="main-es2015.js" type="module"></script>
+    <script src="main-es5.js" nomodule defer></script>
+</body>
+
+<script>
+    window.onload = function () {
+        var fileInputRB = document.getElementById('fileInputRB');
+
+        fileInputRB.addEventListener('change', function (e) {
+            var file = fileInput.files[0];
+            var textType = /text.*/;
+
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                data = reader.result;
+                //alert(data)
+
+                window.localStorage.DRERBSscorer = data;
+                maximumRB = window.localStorage.DRERBSscorer.split('&&&').length - 1
+            }
+
+            reader.readAsText(file);
+
+        });
+
+        initpage();
+        // displaysaves();
+        // drawBasic();
+        // loadsave(blanksave);
+        // check_missions();
+        // check_missions('piperemoval');
+        // recalc(0,'piperemoval',0);
+
+
+
+    }
+</script>
+
+<script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-65893558-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+<div style="display:none" class="no-mobile">
+
+    <a target="_blank" class="no-print"
+        href="https://play.google.com/store/apps/details?id=com.ev3lessons.fllcityshaperscorer">
+        <img id="googleplay" height="100" src="assets/google-play/en_get.svg"></a><br>
+
+    <a target="_blank" class="no-print" href="https://apps.apple.com/app/fll-city-shaper-scorer/id1473760751?ls=1">
+        <img id="appstore" height="68" style="padding: 15px" src="assets/app-store/en.svg"></a>
+
+
+</div>
+
+<link rel="stylesheet" href="assets/css/colors.css" />
+
+<script>
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    toggleDarkTheme(prefersDark.matches);
+
+    // Listen for changes to the prefers-color-scheme media query
+    prefersDark.addListener((mediaQuery) => toggleDarkTheme(mediaQuery.matches));
+
+    // Add or remove the "dark" class based on if the media query matches
+    function toggleDarkTheme(shouldAdd) {
+        document.body.classList.toggle('dark', shouldAdd);
+    }
+</script>
+<div id="styleBlank"></div>
+<script>
+
+    function checkDarkTheme() {
+        var ua = window.navigator.userAgent;
+        var isIE = /MSIE|Trident/.test(ua);
+
+        if (!isIE) {
+            // Android fix for enabling dark mode, see native implementation in MainActivity.java
+            if (window.navigator.userAgent.includes('AndroidDarkMode')) {
+                document.getElementById("styleBlank").innerHTML = " <style>\
+       .timer {\
+            border: 10px solid #121212;\
+            border-collapse: collapse;\
+        }\
+        .ui-radio-off {\
+            background-color: #121212 !important;\
+            color: white !important;\
+            text-shadow: none !important;\
+        }\
+        .ui-btn {\
+            background-color: #121212 !important;\
+            color: white !important;\
+            text-shadow: none !important;\
+        }\
+        .ui-btn-active {\
+            background-color: #8aac4a !important;\
+            color: white !important;\
+            text-shadow: none !important;\
+        }\
+        .ui-radio-on {\
+            background-color: #8aac4a !important;\
+            color: white !important;\
+            text-shadow: none !important;\
+        }\
+        #timerChild {\
+            border: 10px solid white !important;\
+        }\
+        #stopwatchChild {\
+            border: 10px solid white !important;\
+        }\
+        #contentload {\
+            background-color: #121212 !important;\
+            color: white;\
+            text-shadow: none;\
+        }\
+        #wholeBody {\
+            background-color: #121212 !important;\
+        }\
+        .ui-popup {\
+            background-color: #121212 !important;\
+        }\
+        Table {\
+            border: 1px solid white !important;\
+        }\
+        Text {\
+            color: white !important;\
+            fill: white !important;\
+            text-shadow: none;\
+        }\
+        .timer {\
+            border: 10px solid white !important;\
+        }\
+        .ui-page {\
+            background-color: #121212 !important;\
+        }\
+        #loadingGif {\
+            background-color: #121212 !important;\
+        }\
+        #savesTitle {\
+            background-color: #121212 !important;\
+            color: white !important;\
+            text-shadow: none !important;\
+        }\
+        #saves {\
+            background-color: #121212 !important;\
+            color: white !important;\
+            text-shadow: none !important;\
+        }\
+</style>"
+                // Apply dark theme or set theme css variables to dark
+                /*	  i = 0
+                      while (i<document.getElementsByClassName("timer").length) {
+                          document.getElementsByClassName("timer")[i].style.border = "10px solid #121212"
+                          i=i+1
+                      }
+                      i = 0
+                      while (i<document.getElementsByClassName("ui-radio-off").length) {
+                          document.getElementsByClassName("ui-radio-off")[i].style.backgroundColor = "#121212"
+                          document.getElementsByClassName("ui-radio-off")[i].style.color = "white"
+                          document.getElementsByClassName("ui-radio-off")[i].style.textShadow = "none"
+                          i=i+1
+                      }
+                      i = 0
+                      while (i<document.getElementsByClassName("ui-btn").length) {
+                          document.getElementsByClassName("ui-btn")[i].style.backgroundColor = "#121212"
+                          document.getElementsByClassName("ui-btn")[i].style.color = "white"
+                          document.getElementsByClassName("ui-btn")[i].style.textShadow = "none"
+                          i=i+1
+                      }
+                      i = 0
+                      while (i<document.getElementsByClassName("ui-btn-active").length) {
+                          document.getElementsByClassName("ui-btn-active")[i].style.backgroundColor = "#8aac4a"
+                          document.getElementsByClassName("ui-btn-active")[i].style.color = "white"
+                          document.getElementsByClassName("ui-btn-active")[i].style.textShadow = "none"
+                          i=i+1
+                      }
+                      i = 0
+                      while (i<document.getElementsByClassName("ui-radio-on").length) {
+                          document.getElementsByClassName("ui-radio-on")[i].style.backgroundColor = "#8aac4a"
+                          document.getElementsByClassName("ui-radio-on")[i].style.color = "white"
+                          document.getElementsByClassName("ui-radio-on")[i].style.textShadow = "none"
+                          i=i+1
+                      }
+
+                      document.getElementById("timerChild").style.border = "10px solid white !important"
+                      document.getElementById("stopwatchChild").style.border = "10px solid white !important"
+                      document.getElementById("contentload").style.backgroundColor = "#121212"
+                      document.getElementById("contentload").style.color = "white"
+                      document.getElementById("contentload").style.textShadow = "none"
+                      document.getElementById("wholeBody").style.backgroundColor = "#121212"
+                      i = 0
+                      while (i<document.getElementsByClassName("ui-popup").length) {
+                          document.getElementsByClassName("ui-popup")[i].style.backgroundColor = "#8aac4a"
+                          i=i+1
+                      }
+                      */
+                return true;
+            } else {
+                document.getElementById("styleBlank").innerHTML = ""
+                return false
+            }
+        }
+    }
+</script>
+<script>
+    function textNodesUnder(el) {
+        var n, a = [], walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+        while (n = walk.nextNode()) a.push(n);
+        return a;
+    }
+
+
+
+    pgStart = 0
+    function initpage() {
+        languageInit()
+        checkDarkTheme()
+
+        dictionary = getDict(language);
+        if (pgStart == 0) {
+            nodes = textNodesUnder(document.getElementById("wholeBody"));
+            for (i = 0; i < nodes.length; i++) {
+                node = nodes[i];
+                nodes[i].en = nodes[i].data;
+            }
+            pgStart = 1;
+        }
+
+        for (i = 0; i < nodes.length; i++) {
+            node = nodes[i];
+            if (nodes[i].en.trim() != "") nodes[i].data = nodes[i].data.replace(nodes[i].data.trim(), getTranslation(dictionary, nodes[i].en.trim()));
+        }
+
+        // if (window.localStorage.DRERBGoogleSheet != undefined) {
+        //     document.getElementById('sheetId').value = window.localStorage.DRERBGoogleSheet;
+        //     } else {
+        // 	document.getElementById('sheetId').value = undefinedText;
+        //     }
+
+
+        // if (language == 'he' || language == 'ar') {
+        //   document.getElementById("wholeBody").style.textAlign = "right"
+        // } else {
+        //   document.getElementById("wholeBody").style.textAlign = "left"
+
+        // }
+
+        // countrycode = language.split('-')[0]
+        // if (language == 'he') {
+        //   countrycode = "iw"
+        // }
+
+        // document.getElementById("appstore").src = "assets/app-store/" + language + ".svg"
+        // document.getElementById("googleplay").src = "assets/google-play/" + countrycode + "_get.svg"
+
+        document.getElementById('title').innerHTML = reviewTitle
+        // document.getElementById('resetTxt').value = resetText
+        // $('#resetTxt').button('refresh');
+
+        // document.getElementById('pointsTxt').innerHTML = pointsText
+        // document.getElementById('pointsTxt2').innerHTML = pointsText + ": "
+
+        // // document.getElementById('saveGoogleBtn').innerHTML = savescoreText
+        // // document.getElementById('loadTextGoogle').innerHTML = loadsaveText
+
+        // document.getElementById('scorerTitle').innerHTML = scorerText
+        // document.getElementById('savesTitle').innerHTML = savesText
+
+        // // document.getElementById('signin-Google').innerHTML = signin
+        // // document.getElementById('signout-Google').innerHTML = signout
+        // // document.getElementById('GoogleCreate').innerHTML = GoogleCreate
+        // // document.getElementById('GoogleOpen').innerHTML = GoogleOpen
+        // // document.getElementById('googleText').innerHTML = googleSaveText
+        // // document.getElementById('localText').innerHTML = localSaveText
+
+        // // document.getElementById('isIE').innerHTML = isIE
+        // // document.getElementById('googleIntro').innerHTML = googleIntro
+        // // document.getElementById('pastSaves').innerHTML = pastSaves
+        // // document.getElementById('instructions').innerHTML = instructions
+        // // document.getElementById('instructionsA').innerHTML = instructionsA
+        // // document.getElementById('instructionsB').innerHTML = instructionsB
+        // // document.getElementById('instructionsC').innerHTML = instructionsC
+        // // document.getElementById('instructionsD').innerHTML = instructionsD
+        // // document.getElementById('instructionsE').innerHTML = instructionsE
+        // // document.getElementById('instructionsF').innerHTML = instructionsF
+        // // document.getElementById('instructionsG').innerHTML = instructionsG
+
+        // // document.getElementById('teamText').innerHTML = teamText
+        // // document.getElementById('roundText').innerHTML = roundText
+
+        document.getElementById('revisionText').innerHTML = revisionText
+        document.getElementById('copyrightText').innerHTML = copyrightText
+
+        // document.getElementById('systemText').innerHTML = systemText
+
+        // // document.getElementById('idText').innerHTML = idText
+
+        document.getElementById('versionText').innerHTML = versionText
+
+        // //	document.getElementById('tournamentText').innerHTML = tournamentText
+
+        document.getElementById('translatorCredit').innerHTML = translatorCredit
+
+
+        // //   if ((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) {
+        // // document.getElementById('notIE').style.display = 'none'
+        // //   } else {
+        // // document.getElementById('isIE').style.display = 'none'
+        // //   }
+
+
+
+
+        // var variables = ""
+        // for (var name in this) {
+        //   if (name[0] == "M" && name != "API_KEY") {
+        //     variables += name + "\n";
+        //     console.log(name)
+        //     document.getElementById(name).innerHTML = window[name]
+        //   }
+
+        //   if (name.indexOf("yesText") != -1) {
+        //     variables += name + "\n";
+        //     console.log(name)
+        //     document.getElementById(name).innerHTML = yes
+        //   }
+
+        //   if (name.indexOf("noText") != -1) {
+        //     variables += name + "\n";
+        //     console.log(name)
+        //     document.getElementById(name).innerHTML = no
+        //   }
+
+        //   if (name.indexOf("partlyText") != -1) {
+        //     variables += name + "\n";
+        //     console.log(name)
+        //     document.getElementById(name).innerHTML = partly
+        //   }
+
+        //   if (name.indexOf("completelyText") != -1) {
+        //     variables += name + "\n";
+        //     console.log(name)
+        //     document.getElementById(name).innerHTML = completely
+        //   }
+
+        //   if (name.indexOf("mNum") != -1) {
+        //     variables += name + "\n";
+        //     console.log(name)
+        //     document.getElementById(name).innerHTML = missionNumbering
+        //   }
+        // }
+
+        // i = 0
+        // while (i < document.getElementsByTagName("select").length) {
+        //   var myselect = $("select#"+document.getElementsByTagName("select")[i].id);
+        //   myselect[0].selectedIndex =myselect[0].selectedIndex;
+        //   myselect.selectmenu("refresh");
+        //   i=i+1
+        // }
+
+        // displaysaves()
+        // drawBasic()
+
+        document.getElementById('contentload').style.display = 'block'
+        document.getElementById('loadingGif').style.display = 'none'
+        try {
+            displayRBSaves()
+        } catch { }
+        rubricCalc()
+
+        checkDarkTheme()
+
+    }
+
+    initpage();
+
+
+
+    // Query for the toggle that is used to change between themes
+
+    // Listen for the toggle check/uncheck to toggle the dark class on the <body>
+
+    // Listen for changes to the prefers-color-scheme media query
+
+
+
+    // Called by the media query to check/uncheck the toggle
+</script>
+
+</html>
