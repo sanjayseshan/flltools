@@ -1,6 +1,0 @@
-com/ev3lessons/flltools/MainActivity.java
- com.ev3lessons.flltools.MainActivity
-com/ev3lessons/flltools/BuildConfig.java
- com.ev3lessons.flltools.BuildConfig
-com/ev3lessons/flltools/JavaScriptInterface.java
- com.ev3lessons.flltools.JavaScriptInterface
