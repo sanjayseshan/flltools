@@ -21,7 +21,7 @@
 <body style="margin: 10px;">
     <h1>FLL Tools Translator</h1>
     <p>
-        Most content should be copied directly from the FIRST LEGO League challenge documents (some with with minor edits). It is okay if you do not have the time to translate all the content - we will use any help given. 
+        Most content should be copied directly from the FIRST LEGO League challenge documents (some with with minor edits). It is okay if you do not have the time to translate all the sections - we will use any help given. However, please complete "Your Information", "Basic Content" and at least one other section.
     </p>
     <p>Note: the <a href="#anchor-name">Save Button</a> is at the bottom of this page. You can reload save files if you do not complete all the translations at once. Please email your final save file to <a
         href="mailto:team@ev3lessons.com">team@ev3lessons.com</a>.</p>
@@ -51,6 +51,30 @@
     </table>
 
 
+    <h3>Basic Content</h3>
+    <table border=1 width="100%">
+        <tr style="background-color: yellow;">
+            <td>English</td>
+            <td width="60%">Translation</td>
+        </tr>
+        <script>
+            basic = getMainDict("basic")
+            dict = basic
+            var keys = Object.keys(dict);
+            for (i = 0; i < keys.length; i++) {
+                document.write("<tr>")
+                document.write("<td>")
+                document.write(keys[i])
+                document.write("</td>")
+                document.write("<td>")
+
+                document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\""+dict[keys[i]]+"\"></textarea>")
+                document.write("</td>")
+                document.write("</tr>")
+            }
+        </script>
+    </table>
+
     <h3>Scorer</h3>
     <table border=1 width="100%">
         <tr style="background-color: yellow;">
@@ -75,29 +99,6 @@
         </script>
     </table>
 
-    <h3>Basic Content</h3>
-    <table border=1 width="100%">
-        <tr style="background-color: yellow;">
-            <td>English</td>
-            <td width="60%">Translation</td>
-        </tr>
-        <script>
-            basic = getMainDict("basic")
-            dict = basic
-            var keys = Object.keys(dict);
-            for (i = 0; i < keys.length; i++) {
-                document.write("<tr>")
-                document.write("<td>")
-                document.write(keys[i])
-                document.write("</td>")
-                document.write("<td>")
-
-                document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\""+dict[keys[i]]+"\"></textarea>")
-                document.write("</td>")
-                document.write("</tr>")
-            }
-        </script>
-    </table>
 
     <h3>Rubrics</h3>
     <table border=1 width="100%">
