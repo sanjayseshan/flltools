@@ -4,18 +4,11 @@
 
 // Defines a blank save for reset
 
-specialCasesComplete = 0
-function specialCasesCheck(mission) {
 
-}
+var identifier = ""
 
-// Override function when calculating points for each mission
-function specialCasesRecalc(mission) {
-	
-}
-identifier = "CV"
-
-var load2020CV = (function () {
+function load2020CV() {
+	identifier = "CV"
 
 	// Override function in scoring system during the checking for button conflicts
 
@@ -35,7 +28,7 @@ var load2020CV = (function () {
 
 	startRubric()
 
-	startrow()
+	startRow()
 	addCVLevels("#FDEAE3","#FCCEBE","#F4AE94","#EF8C6D",
 	"<b>Beginning</b><br>Minimally observed across the team.",
 	"<b>Developing</b><br>Inconsistently observed across the team",
@@ -137,7 +130,7 @@ var load2020CV = (function () {
 	*/
 
 	writebuffer("cvlist")
-})();
+}
 
-blanksave = "identify1|||false///identify2|||false///identify3|||false///textidentify|||///identify4|||false///identify21|||false///identify22|||false///identify23|||false///textidentify2|||///identify24|||false///design1|||false///design2|||false///design3|||false///textdesign|||///design4|||false///design21|||false///design22|||false///design23|||false///textdesign2|||///design24|||false///create1|||false///create2|||false///create3|||false///textcreate|||///create4|||false///create21|||false///create22|||false///create23|||false///textcreate2|||///create24|||false///iterate1|||false///iterate2|||false///iterate3|||false///textiterate|||///iterate4|||false///iterate21|||false///iterate22|||false///iterate23|||false///textiterate2|||///iterate24|||false///communicate1|||false///communicate2|||false///communicate3|||false///textcommunicate|||///communicate4|||false///communicate21|||false///communicate22|||false///communicate23|||false///textcommunicate2|||///communicate24|||false///textinnovationProject1|||///textinnovationProject2|||///identifyRD1|||false///identifyRD2|||false///identifyRD3|||false///textidentifyRD|||///identifyRD4|||false///identify2RD1|||false///identify2RD2|||false///identify2RD3|||false///textidentify2RD|||///identify2RD4|||false///designRD1|||false///designRD2|||false///designRD3|||false///textdesignRD|||///designRD4|||false///designRD21|||false///designRD22|||false///designRD23|||false///textdesignRD2|||///designRD24|||false///createRD1|||false///createRD2|||false///createRD3|||false///textcreateRD|||///createRD4|||false///createRD21|||false///createRD22|||false///createRD23|||false///textcreateRD2|||///createRD24|||false///iterateRD1|||false///iterateRD2|||false///iterateRD3|||false///textiterateRD|||///iterateRD4|||false///iterateRD21|||false///iterateRD22|||false///iterateRD23|||false///textiterateRD2|||///iterateRD24|||false///communicateRD1|||false///communicateRD2|||false///communicateRD3|||false///textcommunicateRD|||///communicateRD4|||false///communicateRD21|||false///communicateRD22|||false///communicateRD23|||false///textcommunicateRD2|||///communicateRD24|||false///textrobotDesign1|||///textrobotDesign2|||///Community|||false///Breakthrough|||false///Rising|||false///Motivate|||false///textdiscovery|||///discovery1|||false///discovery2|||false///discovery3|||false///discovery4|||false///textinnovation|||///innovation1|||false///innovation2|||false///innovation3|||false///innovation4|||false///textimpact|||///impact1|||false///impact2|||false///impact3|||false///impact4|||false///textinclusion|||///inclusion1|||false///inclusion2|||false///inclusion3|||false///inclusion4|||false///textteamwork|||///teamwork1|||false///teamwork2|||false///teamwork3|||false///teamwork4|||false///textfun|||///fun1|||false///fun2|||false///fun3|||false///fun4|||false///textrobotDesign1|||///textrobotDesign2|||"
+blankRBsave = "identify1|||false///identify2|||false///identify3|||false///textidentify|||///identify4|||false///identify21|||false///identify22|||false///identify23|||false///textidentify2|||///identify24|||false///design1|||false///design2|||false///design3|||false///textdesign|||///design4|||false///design21|||false///design22|||false///design23|||false///textdesign2|||///design24|||false///create1|||false///create2|||false///create3|||false///textcreate|||///create4|||false///create21|||false///create22|||false///create23|||false///textcreate2|||///create24|||false///iterate1|||false///iterate2|||false///iterate3|||false///textiterate|||///iterate4|||false///iterate21|||false///iterate22|||false///iterate23|||false///textiterate2|||///iterate24|||false///communicate1|||false///communicate2|||false///communicate3|||false///textcommunicate|||///communicate4|||false///communicate21|||false///communicate22|||false///communicate23|||false///textcommunicate2|||///communicate24|||false///textinnovationProject1|||///textinnovationProject2|||///identifyRD1|||false///identifyRD2|||false///identifyRD3|||false///textidentifyRD|||///identifyRD4|||false///identify2RD1|||false///identify2RD2|||false///identify2RD3|||false///textidentify2RD|||///identify2RD4|||false///designRD1|||false///designRD2|||false///designRD3|||false///textdesignRD|||///designRD4|||false///designRD21|||false///designRD22|||false///designRD23|||false///textdesignRD2|||///designRD24|||false///createRD1|||false///createRD2|||false///createRD3|||false///textcreateRD|||///createRD4|||false///createRD21|||false///createRD22|||false///createRD23|||false///textcreateRD2|||///createRD24|||false///iterateRD1|||false///iterateRD2|||false///iterateRD3|||false///textiterateRD|||///iterateRD4|||false///iterateRD21|||false///iterateRD22|||false///iterateRD23|||false///textiterateRD2|||///iterateRD24|||false///communicateRD1|||false///communicateRD2|||false///communicateRD3|||false///textcommunicateRD|||///communicateRD4|||false///communicateRD21|||false///communicateRD22|||false///communicateRD23|||false///textcommunicateRD2|||///communicateRD24|||false///textrobotDesign1|||///textrobotDesign2|||///Community|||false///Breakthrough|||false///Rising|||false///Motivate|||false///textdiscovery|||///discovery1|||false///discovery2|||false///discovery3|||false///discovery4|||false///textinnovation|||///innovation1|||false///innovation2|||false///innovation3|||false///innovation4|||false///textimpact|||///impact1|||false///impact2|||false///impact3|||false///impact4|||false///textinclusion|||///inclusion1|||false///inclusion2|||false///inclusion3|||false///inclusion4|||false///textteamwork|||///teamwork1|||false///teamwork2|||false///teamwork3|||false///teamwork4|||false///textfun|||///fun1|||false///fun2|||false///fun3|||false///fun4|||false///textrobotDesign1|||///textrobotDesign2|||"
 

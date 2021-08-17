@@ -69,15 +69,15 @@ function loadsave(save) {
         document.getElementById('no' + save1[0]).click()
       }
     } else if (document.getElementById('select' + save1[0]) != null) {
-        myselect = $("select#"+'select' +save1[0]);
-        myselect[0].selectedIndex = save1[1];
+        myselect = $("#"+'select' +save1[0]);
+        myselect[0].value = String(save1[1]);
 
        if (!applewebkit) {
             myselect.selectmenu("refresh");
         
         } else {
         }
-          recalc(parseInt(document.getElementById('select' +save1[0]).value ),save1[0],$('select#select'+save1[0])[0].selectedIndex)
+          recalc(parseInt(document.getElementById('select' +save1[0]).value ),save1[0],parseInt($('#select'+save1[0])[0].value))
     } else {
       $("#" + save1[0]).val(parseInt(save1[1])).slider("refresh");
       recalc(window[save1[0] + 'inc'] * parseInt(save1[1]), save1[0], parseInt(save1[1]))
@@ -92,7 +92,7 @@ function loader(save) {
   data = window.localStorage.DRCCSscorer.split('/')[save];
   loadsave(String(data));
   loadsave(String(data));
-  alert(loadedText);
+  ionAlert(loadedText);
 }
 
 
@@ -231,5 +231,5 @@ function saver() {
     window.localStorage.DRCCS1scorer = score + ' Points - ' + datetime;
   }
 
-  alert(savedText);
+  ionAlert(savedText);
 }

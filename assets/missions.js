@@ -7,6 +7,7 @@
 specialCasesComplete = 0
 
 function specialCasesCheck(mission) {
+    console.log("check",mission)
     if (specialCasesComplete != 1) {
         specialCasesComplete = 1
     } else { return }
@@ -112,7 +113,7 @@ function specialCasesRecalc(mission) {
     }
 }
 
-var load2021 = (function () {
+function load2021() {
     blanksave = "advantage1|0,innovationProject1|0,unusedCapacity1|0,unloadCargoPlane1|0,unloadCargoPlane2|0,transportationJourney1|0,transportationJourney2|0,switchEngine1|0,accidentAvoidance1|0,accidentAvoidance2|0,unloadCargoShip1|0,unloadCargoShip2|0,airDrop1|0,airDrop2|0,airDrop3|0,trainTracks1|0,trainTracks2|0,sortingCenter1|0,homeDelivery1|0,homeDelivery2|0,largeDelivery1|0,largeDelivery2|0,largeDelivery3|0,platooningTrucks1|0,platooningTrucks2|0,bridge1|0,loadCargo1|0,loadCargo2|0,loadCargo3|0,cargoConnect1|0,cargoConnect2|0,cargoConnect3|0,cargoConnect4|0,cargoConnect5|0,precision1|0,graciousProfessionalism|0"
     // Override function in scoring system during the checking for button conflicts
 
@@ -273,4 +274,6 @@ var load2021 = (function () {
 */
 
     writebuffer("missionlist")
-})();
+}
+
+// load2021()

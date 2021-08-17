@@ -2,9 +2,69 @@
 // Mostly compatible with scorers from v3.0.0 (2016). However, early scorers have a different special cases that were hard wired into the scorer and did not have a dynamic content replacer. Fully compatible with 2019+ DCR scorers (with an added buffer writer for 2019).
 // Requires JQuery Mobile and JQuery
 
-all_mission = []
 
-buffer = ""
+all_mission = null
+buffer = null
+rbchildren = null
+rbchildrenEX = null
+ssecct = null
+
+function ionAlert(message) {
+    const alert = document.createElement('ion-alert');
+    alert.cssClass = 'my-custom-class';
+    alert.header = 'Alert';
+    //alert.subHeader = 'Subtitle';
+    alert.message = message;
+    alert.buttons = ['OK'];
+  
+    document.body.appendChild(alert);
+   alert.present();
+  }
+  
+$.fn.checkboxradio = function (mode) {
+    if (mode == "enable") {
+        this[0].disabled = false;
+        // try {
+        //     this.children()[0].disabled = false
+        // } catch { }
+    } else if (mode == "disable") {
+    
+        this[0].disabled = true;
+        // console.log(this)
+        // try {
+        //     this.children()[0].disabled = true
+        // } catch { }
+    }
+};
+
+$.fn.selectmenu = function (mode) {
+    if (mode == "enable") {
+        this[0].disabled = false;
+        // try {
+        //     this.children()[0].disabled = false
+        // } catch { }
+    } else if (mode == "disable") {
+        this[0].disabled = true;
+        // try {
+        //     this.children()[0].disabled = true
+        // } catch { }
+    }
+}
+
+
+$.fn.slider = function (mode) {
+    if (mode == "enable") {
+        this[0].disabled = false;
+        // try {
+        //     this.children()[0].disabled = false
+        // } catch { }
+    } else if (mode == "disable") {
+        this[0].disabled = true;
+        // try {
+        //     this.children()[0].disabled = true
+        // } catch { }
+    }
+};
 
 window.mobileAndTabletCheck = function () {
     let check = false;
@@ -21,6 +81,7 @@ function clearbuffer() {
 
 function writebuffer(element) {
     document.getElementById(element).innerHTML = buffer
+    document.getElementById("loadedBtn").click()
 }
 
 function addToBuffer(data) {
@@ -32,22 +93,58 @@ function createbutton(mission, points, description) {
     window[mission + 'save'] = 0
     window["yesText" + description] = 0
     window["noText" + description] = 0
-    addToBuffer('<tr>\
-<td style="font-size: 90%; padding-left: 10px; padding-right: 5px; background-color: sky;" id="' + description + '"><!--<i class="only-print">__/' + points.toString() + '</i>-->\
+//     addToBuffer('<tr>\
+// <td style="font-size: 90%; padding-left: 10px; padding-right: 5px; background-color: sky;" id="' + description + '"><!--<i class="only-print">__/' + points.toString() + '</i>-->\
+//   ' + description + '\
+//   </td>\
+//   </tr>\
+//   <tr>\
+//   <td style="text-align: center;"><br>No\
+//   <ion-toggle name="' + mission + '"  id="yes' + mission + '" checked=false></ion-toggle>Yes<br><br><input type="hidden"  onclick="check_missions(\'' + mission + '\');recalc(0,\'' + mission + '\', 0)" name="' + mission + '"  value="false" id="no' + mission + '">\
+//   </td>\
+//   </tr>')
+
+  addToBuffer('<tr>\
+  <td style="font-size: 90%; padding-left: 10px; padding-right: 5px; background-color: sky;" id="' + description + '">\
   ' + description + '\
   </td>\
   </tr>\
   <tr>\
   <td>\
-  <fieldset data-role="controlgroup" data-theme="b" data-type="horizontal" style="text-align: center;">\
-  <label for="yes' + mission + '" style="font-size: 12px;" id="yesText' + description + '">Yes</label>\
-  <input  type="radio" onclick="check_missions(\'' + mission + '\');recalc(' + points + ',\'' + mission + '\',1)" name="' + mission + '" value="true" id="yes' + mission + '" checked=false>\
-  <label for="no' + mission + '" style="font-size: 12px;" id="noText' + description + '">No</label>\
-  <input  type="radio" onclick="check_missions(\'' + mission + '\');recalc(0,\'' + mission + '\', 0)" name="' + mission + '"  value="false" id="no' + mission + '" checked="true">\
-  </fieldset>\
-  </td>\
+  ')
+
+    addToBuffer('\
+    \
+    <ion-list><ion-radio-group id="parent' + mission + '">\
+    <ion-item>\
+        <ion-radio slot="start" onclick="this.checked=true;document.getElementById(\'no' + mission + '\').checked=false;check_missions(\'' + mission + '\');recalc(' + points + ',\'' + mission + '\',1)" name="' + mission + '" value="1" id="yes' + mission + '" input-id="yes' + mission + '"  ></ion-radio>\
+      <ion-label class="center" for="yes' + mission + '" id="yesText' + description + '">Yes</ion-label>\
+    </ion-item>\
+    <ion-item>\
+        <ion-radio slot="start" onclick="this.checked=true;document.getElementById(\'yes' + mission + '\').checked=false;check_missions(\'' + mission + '\');recalc(0,\'' + mission + '\', 0)" name="' + mission + '"  value="0" id="no' + mission + '" input-id="no' + mission + '" ></ion-radio>\
+      <ion-label class="center"  for="no' + mission + '" id="noText' + description + '">No</ion-label>\
+    </ion-item>\
+\
+</ion-radio-group></ion-list>\
+  \
+    ')
+
+  addToBuffer('</td>\
   </tr>')
+
+
+//   document.addEventListener("DOMContentLoaded", function() {
+//     $("#yes" + mission )[0].addEventListener("ionChange", () => {
+//         check_missions(mission);recalc(points*$("#yes" + mission )[0].checked,mission,$("#yes" + mission )[0].checked);
+//  })}, false);
 }
+
+// <!--<fieldset data-role="controlgroup" data-theme="b" data-type="horizontal" style="text-align: center;">\
+// <label for="yes' + mission + '" style="font-size: 12px;" id="yesText' + description + '">Yes</label>\
+// <input  type="radio" onclick="check_missions(\'' + mission + '\');recalc(' + points + ',\'' + mission + '\',1)" name="' + mission + '" value="true" id="yes' + mission + '" checked=false>\
+// <label for="no' + mission + '" style="font-size: 12px;" id="noText' + description + '">No</label>\
+// <input  type="radio" onclick="check_missions(\'' + mission + '\');recalc(0,\'' + mission + '\', 0)" name="' + mission + '"  value="false" id="no' + mission + '" checked="true">\
+// </fieldset>-->\
 
 function create3button(mission, points, points2, description) {
     window[mission] = 0
@@ -62,15 +159,49 @@ function create3button(mission, points, points2, description) {
   </tr>\
   <tr>\
   <td>\
-  <fieldset data-role="controlgroup" data-theme="b" data-type="horizontal" style="text-align: center; font-size: 50%;">\
-  <label for="completely' + mission + '" style="font-size: 12px;" id="completelyText' + description + '">Completely</label>\
-  <input  type="radio" onclick="check_missions(\'' + mission + '\');recalc(' + points2 + ',\'' + mission + '\',2)" name="' + mission + '" value="completely" id="completely' + mission + '" checked=false>\
-  <label for="partly' + mission + '" style="font-size: 12px;" id="partlyText' + description + '">Partly</label>\
-  <input  type="radio" onclick="check_missions(\'' + mission + '\');recalc(' + points + ',\'' + mission + '\',1)" name="' + mission + '" value="partly" id="partly' + mission + '" checked=false>\
-  <label for="no' + mission + '" style="font-size: 12px;" id="noText' + description + '">No</label>\
-  <input  type="radio" onclick="check_missions(\'' + mission + '\');recalc(0,\'' + mission + '\', 0)" name="' + mission + '"  value="false" id="no' + mission + '" checked="true">\
-  </fieldset>\
-  </td>\
+  ')
+//   <fieldset data-role="controlgroup" data-theme="b" data-type="horizontal" style="text-align: center; font-size: 50%;">\
+//   <label for="completely' + mission + '" style="font-size: 12px;" id="completelyText' + description + '">Completely</label>\
+//   <input  type="radio" onclick="check_missions(\'' + mission + '\');recalc(' + points2 + ',\'' + mission + '\',2)" name="' + mission + '" value="completely" id="completely' + mission + '" checked=false>\
+//   <label for="partly' + mission + '" style="font-size: 12px;" id="partlyText' + description + '">Partly</label>\
+//   <input  type="radio" onclick="check_missions(\'' + mission + '\');recalc(' + points + ',\'' + mission + '\',1)" name="' + mission + '" value="partly" id="partly' + mission + '" checked=false>\
+//   <label for="no' + mission + '" style="font-size: 12px;" id="noText' + description + '">No</label>\
+//   <input  type="radio" onclick="check_missions(\'' + mission + '\');recalc(0,\'' + mission + '\', 0)" name="' + mission + '"  value="false" id="no' + mission + '" checked="true">\
+//   </fieldset>\
+// addToBuffer(`<ion-list>
+// <ion-list-item tappable>
+// <label class="left">
+//   <ion-radio name="color" input-id="radio-1" checked></ion-radio>
+// </label>
+// <label for="radio-1" class="center">
+//   Red
+// </label>
+// </ion-list-item>
+// </ion-list>`)
+
+    addToBuffer('\
+    \
+    <ion-list><ion-radio-group id="parent' + mission + '" >\
+    <ion-item>\
+        <ion-radio slot="start" onclick="this.checked=true;document.getElementById(\'no' + mission + '\').checked=false;document.getElementById(\'partly' + mission + '\').checked=false;check_missions(\'' + mission + '\');recalc(' + points2 + ',\'' + mission + '\',2)" name="' + mission + '" value="2" id="completely' + mission + '" input-id="completely' + mission + '"  ></ion-radio>\
+      <ion-label class="center" for="completely' + mission + '" id="completelyText' + description + '">Completely</ion-label>\
+    </ion-item>\
+\
+    <ion-item>\
+        <ion-radio slot="start" onclick="this.checked=true;document.getElementById(\'no' + mission + '\').checked=false;document.getElementById(\'completely' + mission + '\').checked=false;check_missions(\'' + mission + '\');recalc(' + points + ',\'' + mission + '\',1)" name="' + mission + '" value="1" id="partly' + mission + '" input-id="partly' + mission + '"  ></ion-radio>\
+      <ion-label class="center"  for="partly' + mission + '"  id="partlyText' + description + '">Partly</ion-label>\
+    </ion-item>\
+\
+    <ion-item>\
+        <ion-radio slot="start" onclick="this.checked=true;document.getElementById(\'partly' + mission + '\').checked=false;document.getElementById(\'completely' + mission + '\').checked=false;check_missions(\'' + mission + '\');recalc(0,\'' + mission + '\', 0)" name="' + mission + '"  value="0" id="no' + mission + '" input-id="no' + mission + '" ></ion-radio>\
+      <ion-label class="center"  for="no' + mission + '" id="noText' + description + '">No</ion-label>\
+    </ion-item>\
+\
+</ion-radio-group></ion-list>\
+  \
+    ')
+
+  addToBuffer('</td>\
   </tr>')
 }
 
@@ -87,21 +218,29 @@ function createrange(mission, increment, min, max, start, description) {
     window[mission + 'save'] = 0
     window[mission + 'inc'] = increment
 
-    addToBuffer('<tr>\
-  <td style="font-size: 90%; padding-left: 10px; padding-right: 5px;" id="' + description + '">\
+    addToBuffer('<tr >\
+  <td  style="font-size: 90%; padding-left: 10px; padding-right: 5px;" id="' + description + '">\
   ' + description + '	  </td>\
   </tr>\
   <tr>\
   <td >\
-  <input type="range" increment="' + increment + '" data-highlight="true" data-theme="b" data-show-value="true" name="' + mission + '" id="' + mission + '" value="' + start + '" min="' + min + '" max="' + max + '" step="1" onchange="check_missions(\'' + mission + '\');recalc(this.value*' + increment + ',\'' + mission + '\',this.value);">\
-  <p id="' + mission + 'Txt" style="color: red"></p>\
+  <ion-range [(ngModel)]="usernameText"  (ionInput)="findUserWithUsername()" ionChange="check_missions(\'' + mission + '\');recalc(this.value*' + increment + ',\'' + mission + '\',this.value);" class="swiper-no-swiping" snaps="true" pin=true style="width: 100%;" type="range" increment="' + increment + '" data-highlight="true" data-theme="b" data-show-value="true" name="' + mission + '" id="' + mission + '" value="' + start + '" min="' + min + '" max="' + max + '" step="1" ><ion-label slot="start" id="' + mission + 'Label">'+start+'</ion-label></ion-range>\
+  <p id="' + mission + 'text" style="color: red"></p>\
   </td>\
   </tr>')
-        // if (start > 0) {
-        // $(document).ready(function() {
-        //     recalc(increment*start,mission,start)
-        // });
-        // }
+//   document.addEventListener("DOMContentLoaded", function() {
+
+    document.getElementById("loadedBtn").addEventListener("click", function() {
+      $("#" + mission )[0].addEventListener("ionChange", () => {
+    check_missions(mission);recalc($("#" + mission )[0].value* increment ,mission ,$("#" + mission )[0].value)
+    $("#" + mission +"Label")[0].innerHTML = $("#" + mission )[0].value
+   })
+}, false);
+    // if (start > 0) {
+    // $(document).ready(function() {
+    //     recalc(increment*start,mission,start)
+    // });
+    // }
 }
 
 function detectAppleWebKit() {
@@ -109,7 +248,7 @@ function detectAppleWebKit() {
     return userAgent.indexOf("applewebkit") != -1 && userAgent.indexOf("chrome") == -1
 }
 
-applewebkit  = detectAppleWebKit()
+applewebkit = detectAppleWebKit()
 
 function createdropdown(mission, items, points, description) {
     window[mission] = 0
@@ -120,24 +259,33 @@ function createdropdown(mission, items, points, description) {
     } else {
         mitigation = ''
     }
-
+    // ;
     addToBuffer('<tr>\
   <td style="font-size: 90%; padding-left: 10px; padding-right: 5px;" id="' + description + '">\
   ' + description + '	  </td>\
   </tr>\
   <tr>\
-  <td >\
-      <select onchange="check_missions(\'' + mission + '\');recalc(parseInt(this.value),\'' + mission + '\',$(\'select#select' + mission + '\')[0].selectedIndex)" name="' + mission + '" id="select' + mission + '" '+mitigation+'> ')        
-        //  addToBuffer('<option value="0" id="'+description+'0"></option>')
+<td >\
+      <ion-select   ionChange="alert(\'test\')" name="' + mission + '" id="select' + mission + '" ' + mitigation + '> \
+\
+  ')
+    //  addToBuffer('<option value="0" id="'+description+'0"></option>')
     i = 0
-    while (i < items.length) {        
-        addToBuffer('<option  value="' + points[i] + '" id="' + items[i] + '">' + items[i] + '</option>')
+    while (i < items.length) {
+        addToBuffer('<ion-select-option   value="' + points[i] + '" id="' + items[i] + '">' + items[i] + '</ion-select-option>')
         i = i + 1
-    }    
-    addToBuffer('</select>\
+    }
+    addToBuffer('</ion-select>\
   <p id="' + mission + 'Txt" style="color: red"></p>\
   </td>\
   </tr>')
+//   document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("loadedBtn").addEventListener("click", function() {  
+    $("#select" + mission )[0].addEventListener("ionChange", () => {
+    check_missions(mission);
+    recalc(parseInt($("#select"+mission)[0].value), mission,parseInt($("#select"+mission)[0].value))
+
+   })}, false);
 }
 
 
@@ -163,8 +311,8 @@ function starttable(mission, title, image, children, extrarows) {
   <table style="width:100%; border: 1px solid black; border-collapse: collapse; " border="1">\
   <tr>\
     <td rowspan="' + element + '" width="60px"> <img src="assets/missions/' + image + '" width="58px"></td>\
-    <td style="font-size: 110%; text-align: center; background-color: '+color+'; color: white;">\
-  ' + missionDisp + ' <text id="' + title + '">' +title + '</text>:<text> </text>' + '\
+    <td style="font-size: 110%; text-align: center; background-color: '+ color + '; color: white;">\
+  ' + missionDisp + ' <text id="' + title + '">' + title + '</text>:<text> </text>' + '\
       <i style="font-style: normal;" id="' + mission + 'pts">0</i>\
     </td>\
   </tr>\
@@ -176,11 +324,11 @@ function endtable() {
 }
 
 function startrow(width) {
-    if (window.innerWidth > width) {
-        //alert(screen.width)
-        //alert(width)
-        addToBuffer('<td width="' + (100 / columnCount) + '%" style="padding-right: 2px; padding-left: 2px;" valign="top">')
-    }
+    // if (window.innerWidth > width) {
+    //     //alert(screen.width)
+    //     //alert(width)
+    //     addToBuffer('<td width="' + (100 / columnCount) + '%" style="padding-right: 2px; padding-left: 2px;" valign="top">')
+    // }
 }
 
 function endrow(width) {
@@ -195,154 +343,190 @@ function breakrow(minwidth, maxwidth) {
     if (window.innerWidth > minwidth && window.innerWidth < maxwidth) {
         addToBuffer('</td>')
         addToBuffer('<td width="' + (100 / columnCount) + '%" style="padding-right: 2px;" valign="top">')
-    } else {}
+    } else { }
 }
 
 //addToBuffer('hi')
 
 
+
 function startRubric() {
-    addToBuffer(' <table cellspacing="0">')
+    addToBuffer(' <ion-grid cellspacing="0">')
 }
 
 function endRubric() {
-    addToBuffer(' </table>')
+    addToBuffer(' </ion-grid>')
 }
 
 function startRow() {
-    addToBuffer("<tr>")
+    addToBuffer("<ion-radio-group ><ion-row style='border:1px solid grey;'>")
 }
 
 function addSectionTitle(title) {
-    addToBuffer('<td class="rbtd" > \
+    addToBuffer('<ion-col  class="rbtd" radio-group > \
     <p class="s2" style="">'+ title + '</p>\
-    </td>')
+    </ion-col>')
 }
 
-rbchildren = []
-ssecct = 0
+
 function addSubSection(description, color, children) {
-    addToBuffer('<td class="rbtd" style="height:40px;border:1px solid black;color: black !important;" colspan="4" bgcolor="' + color + '">\
-      <div style="display: flex;"><div style="margin-left:5px;flex: 0 0 95%;">  '+ description + '   </div> <div style="text-align:right;color:red;flex:1;margin-right:5px;">  <b style="text-align:right; color:red" id="' + ssecct + description.split(" ")[0] + '"></b>  </div>    \
-    </td>')
+    addToBuffer('<ion-col class="rbtd" style="min-height:40px;border:1px solid black;color: black !important;background-color:' + color + '" colspan="4" bgcolor="' + color + '">\
+      <div style="display: flex;"><div style="margin-left:5px;flex: 0 0 95%;">  '+ description + '   </div> <div style="text-align:right;color:red;flex:1;margin-right:5px;">  <b style="text-align:right; color:red" id="' + ssecct + description.split(" ")[0] + '"></b>  </div>  </div>  \
+    </ion-col>')
     rbchildren.push([ssecct + description.split(" ")[0], children])
     ssecct = ssecct + 1
 }
 
 function closeRow() {
-    addToBuffer("</tr>")
+    addToBuffer("</ion-row></ion-radio-group>")
 }
 
 function addOption(name, value, id) {
-    addToBuffer('<td class="rbtd" style="border:1px solid black;">\
-      <label for="'+ name + id + '" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off"><span class="ui-btn-text">' + value + '</span> </label>\
-              <input data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="c" onclick="rubricCalc()" value="'+ id + '" class="rbitem rb'+identifier+' rb'+identifier+'" type="radio" name="' + name + '" id="' + name + id + '">\
-    </td>')
+    // border:1px solid black;
+    addToBuffer('<ion-col class="rbtd " style="width:200px;" >\
+    <ion-item class="item-text-wrap" text-wrap><ion-label text-wrap class="item-text-wrap"  for="'+ name + id + '">' + value + '</ion-label>\
+              <ion-radio  onclick="setTimeout(function(){ rubricCalc(); }, 100);              " value="'+ id + '" class="rbitem rb' + identifier + ' rb' + identifier + '" type="radio" name="' + name + '" id="' + name + id + '"></ion-radio></ion-item>\
+    </ion-col>')
 }
 
 function addCVOption(name, value, id) {
-    addToBuffer('<td class="rbtd" style="text-align:center;align-items:center;border:1px solid black;">\
-      \
-            <label> <input onclick="rubricCalc()" value="'+ id + '" class="rbitem rb'+identifier+' rb'+identifier+'" type="radio" name="' + name + '" id="' + name + id + '"></label>\
-    </td>')
+    if (identifier != "EX") {
+        addToBuffer('<ion-col class="rbtd item-text-wrap" style="text-align:center;align-items:center;border:1px solid black;">\
+        \
+        <ion-item class="item-text-wrap" text-wrap><ion-label for="'+ name + id + '"> </label><ion-radio onclick="setTimeout(function(){ rubricCalc(); }, 100);" value="'+ id + '" class="rbitem rb' + identifier + ' rb' + identifier + '" type="radio" name="' + name + '" id="' + name + id + '"></ion-radio></ion-item>\
+        </ion-col>')
+    } else {
+        addToBuffer('<ion-col class="rbtd item-text-wrap" style="text-align:center;align-items:center;border:1px solid black;">\
+        \
+        <ion-item class="item-text-wrap" text-wrap><ion-label for="'+ name + id + '"> </label><ion-radio onclick="setTimeout(function(){ rubricCalcEX(); }, 100);" value="'+ id + '" class="rbitemEX rb' + identifier + ' rb' + identifier + '" type="radio" name="' + name + '" id="' + name + id + '"></ion-radio></ion-item>\
+        </ion-col>')
+    }
 }
 
 function addFreeOption(name, id) {
-    if (!mobileAndTabletCheck()) {
-        addToBuffer('<td class="rbtd" style="border:1px solid black;">\
-        <label for="'+ name + id + '" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off">      <textarea class="rbitem rb'+identifier+' rb'+identifier+'" id="text' + name + '" cols="50" height="100%"></textarea>\
+    // if (!mobileAndTabletCheck()) {
+        // border:1px solid black;
+        addToBuffer('<ion-col class="rbtd" style="">\
+        <ion-item class="item-text-wrap" text-wrap> <label for="'+ name + id + '" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off">    \
         </label>\
+        <ion-textarea onclick="document.getElementById(\'' + name + id + '\').click()" style="margin-left:10px;" class="rbitem rb' + identifier + ' rb' + identifier + '" id="text' + name + '" cols="50" height="100%"></ion-textarea>        <ion-radio onclick="setTimeout(function(){ rubricCalc(); }, 100);" value="'+ id + '" class="rbitem rb' + identifier + ' rb' + identifier + '" type="radio" name="' + name + '" id="' + name + id + '"></ion-radio>\
+</ion-item>\
         \
         \
-                <input onclick="rubricCalc()" value="'+ id + '" class="rbitem rb'+identifier+' rb'+identifier+'" type="radio" name="' + name + '" id="' + name + id + '">\
-        </td>')
-    } else {
-        addToBuffer('<td class="rbtd" style="border:1px solid black;">\
-        <label for="'+ name + id + '" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off">    \
-        </label>\
-        \
-        \
-                <input onclick="rubricCalc()" value="'+ id + '" class="rbitem rb'+identifier+' rb'+identifier+'" type="radio" name="' + name + '" id="' + name + id + '">  <textarea class="rbitem rb'+identifier+' rb'+identifier+'" id="text' + name + '" cols="50" height="100%"></textarea>\
-        </td>')
-    }
+        </ion-col>')
+    // } else {
+    //     addToBuffer('<ion-col class="rbtd" style="border:1px solid black;">\
+    //     <label for="'+ name + id + '" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off">    \
+    //     </label>\
+    //     \
+    //     \
+    //             <input onclick="rubricCalc()" value="'+ id + '" class="rbitem rb' + identifier + ' rb' + identifier + '" type="radio" name="' + name + '" id="' + name + id + '">  <textarea class="rbitem rb' + identifier + ' rb' + identifier + '" id="text' + name + '" cols="50" height="100%"></textarea>\
+    //     </ion-col>')
+    // }
 }
 
 
 function addCVFree(name, id) {
-    addToBuffer('<td class="rbtd" rowspan="2" style="border:1px solid black;">\
-    <textarea class="rbitem rb'+identifier+' rb'+identifier+'" id="text'+ name + '" cols="50" height="100%"></textarea>\
-    </td>')
+    addToBuffer('<ion-col size="2" class="rbtd" rowspan="2" style="border:1px solid black;">\
+    <ion-textarea onclick="document.getElementById(\''+name+'4\').click()" class="rbitem rb'+ identifier + ' rb' + identifier + '" id="text' + name + '" cols="50" height="100%"></ion-textarea>\
+    </ion-col>')
 }
 
 function addComments(name, title, item1, item2) {
-    addToBuffer('<tr><td  style="text-align:center;" colspan="4"><b><br>'+title+'</b></td></tr><tr><td style="text-align:center;" colspan="2">'+item1+'<text>:</text></td><td style="text-align:center;" colspan="2">'+item2+'<text>:</text></td></tr><tr><td  colspan=2>\
-      <textarea class="rbitem rb'+identifier+'" id="text'+ name + '1" width="100%" height="100%"></textarea>\
-    </td><td  colspan=2>\
-    <textarea class="rbitem rb'+identifier+'" id="text'+ name + '2" width="100%" height="100%"></textarea>\
-  </td></tr>')
+    addToBuffer('<ion-row><ion-col  style="text-align:center;" colspan="4"><b><br>' + title + '</b></ion-col></ion-row><ion-row><ion-col style="text-align:center;" colspan="2">' + item1 + '<text>:</text></ion-col><ion-col style="text-align:center;" colspan="2">' + item2 + '<text>:</text></ion-col></ion-row><ion-row><ion-col  colspan=2>\
+      <ion-textarea  rows="10" style="border:1px solid grey" class="rbitem rb'+ identifier + '" id="text' + name + '1" width="100%" height="100%"></ion-textarea>\
+    </ion-col><ion-col  colspan=2>\
+    <ion-textarea rows="10" style="border:1px solid grey" class="rbitem rb'+ identifier + '" id="text' + name + '2" width="100%" height="100%"></ion-textarea>\
+  </ion-col></ion-row>')
 }
 
-function addLevels(color1, color2, color3, color4,label1,label2,label3,label4,label5) {
-    addToBuffer('<td bgcolor="' + color1 + '" class="rbtd" style="color:black !important;text-align: center;font-weight: bold;">'+label1+'<br>1</td><td bgcolor="' + color2 + '" style="color:black !important;text-align: center;font-weight: bold;" class="rbtd">'+label2+'<br>2</td><td bgcolor="' + color3 + '" class="rbtd" style="color:black !important;text-align: center;font-weight: bold;">'+label3+'<br>3</td><td style="color:black !important;text-align: center;font-weight: bold;" bgcolor="' + color4 + '" class="rbtd">'+label4+'<br>4<br><i>'+label5+'</i></td>')
+function addLevels(color1, color2, color3, color4, label1, label2, label3, label4, label5) {
+    addToBuffer('<ion-col bgcolor="' + color1 + '" class="rbtd" style="color:black !important;text-align: center;font-weight: bold;background-color:' + color1 + '">' + label1 + '<br>1</ion-col><ion-col bgcolor="' + color2 + '" style="color:black !important;text-align: center;font-weight: bold;background-color:' + color2 + '" class="rbtd">' + label2 + '<br>2</ion-col><ion-col bgcolor="' + color3 + '" class="rbtd" style="color:black !important;text-align: center;font-weight: bold;background-color:' + color3 + '">' + label3 + '<br>3</ion-col><ion-col style="color:black !important;text-align: center;font-weight: bold;background-color:' + color4 + '" bgcolor="' + color4 + '" class="rbtd">' + label4 + '<br>4<br><i>' + label5 + '</i></ion-col>')
 }
 
 
 
-function addCVLevels(color1, color2, color3, color4,label1,label2,label3,label4,label5) {
-    addToBuffer('<td bgcolor="' + color1 + '" class="rbtd" style="color:black !important;text-align: center;width:20%;">'+label1+'<br>1</td><td bgcolor="' + color2 + '" style="color:black !important;text-align: center;width:20%;" class="rbtd">'+label2+'<br>2</td><td bgcolor="' + color3 + '" class="rbtd" style="color:black !important;text-align: center;width:20%;">'+label3+'<br>3</td><td style="color:black !important;text-align: center;width:20%;" bgcolor="' + color4 + '" class="rbtd">'+label4+'<br>4</td><td bgcolor="black" style="text-align:center;color:white!important">'+label5+'</td>')
+function addCVLevels(color1, color2, color3, color4, label1, label2, label3, label4, label5) {
+    addToBuffer('<ion-col  bgcolor="' + color1 + '" class="rbtd" style="color:black !important;text-align: center;width:20%;background-color:' + color1 + '">' + label1 + '<br>1</ion-col><ion-col  bgcolor="' + color2 + '" style="color:black !important;text-align: center;width:20%;background-color:' + color2 + '" class="rbtd">' + label2 + '<br>2</ion-col><ion-col  bgcolor="' + color3 + '" class="rbtd" style="color:black !important;text-align: center;width:20%;background-color:' + color3 + '">' + label3 + '<br>3</ion-col><ion-col   style="color:black !important;text-align: center;width:20%;background-color:' + color4 + '" bgcolor="' + color4 + '" class="rbtd">' + label4 + '<br>4<div size="2" bgcolor="black" style="text-align:center;color:white!important;background-color:black;">' + label5 + '</div></ion-col>')
 }
 
 function addStrengths(item1, item2, item3, item4) {
-    addToBuffer('    <fieldset data-role="controlgroup">    <td colspan="5">\
-<input class="rbitem rb'+identifier+'" type="checkbox" id="'+ item1.split(" ")[0] + '" name="' + item1.split(" ")[0] + '">\
-<label for="'+ item1.split(" ")[0] + '">' + item1 + '</label>\
-    <label for="'+ item2.split(" ")[0] + '">\
-    '+ item2 + '\
-            <input class="rbitem rb'+identifier+'" type="checkbox" id="'+ item2.split(" ")[0] + '" name="' + item2.split(" ")[0] + '">    </label>\
+    addToBuffer('    <fieldset data-role="controlgroup">    <ion-col colspan="5">\
+    <ion-item>\
+<ion-label text-wrap for="'+ item1.split(" ")[0] + '">' + item1 + '</ion-label>\
+<ion-checkbox slot="start"  class="rbitem rb'+ identifier + '" type="checkbox" id="' + item1.split(" ")[0] + '" name="' + item1.split(" ")[0] + '"> </ion-checkbox>\
+</ion-item>\
+   <ion-item> <ion-label text-wrap for="'+ item2.split(" ")[0] + '">\
+    '+ item2 + '</ion-label>\
+            <ion-checkbox slot="start" class="rbitem rb'+ identifier + '" type="checkbox" id="' + item2.split(" ")[0] + '" name="' + item2.split(" ")[0] + '"> </ion-checkbox>  </ion-item> \
     \
-    <label for="'+ item3.split(" ")[0] + '">' + item3 + '\
-            <input class="rbitem rb'+identifier+'" type="checkbox" id="'+ item3.split(" ")[0] + '" name="' + item3.split(" ")[0] + '">    </label>\
+    <ion-item>  <ion-label text-wrap for="'+ item3.split(" ")[0] + '">' + item3 + '</ion-label>\
+            <ion-checkbox slot="start" class="rbitem rb'+ identifier + '" type="checkbox" id="' + item3.split(" ")[0] + '" name="' + item3.split(" ")[0] + '">  </ion-checkbox>   </ion-item> \
     \
     \
-    </fieldset>    ')
+    </fieldset>  </ion-col>  ')
 }
 
-function addELevels(color1,color2,color3,color4,item1,item2,item3) {
-    addToBuffer('<td></td><td></td><td bgcolor="'+color1+'" class="rbtd" style="text-align: center;font-weight: bold;color:black!important;">'+item1+'<br></td><td bgcolor="'+color3+'" class="rbtd" style="text-align: center;font-weight: bold;color:black!important;">'+item2+'<br></td><td style="text-align: center;font-weight: bold;color:black!important;" bgcolor="'+color4+'" class="rbtd">'+item3+'<br></td>')
+function addELevels(color1, color2, color3, color4, item1, item2, item3) {
+    addToBuffer('<ion-col></ion-col><ion-col></ion-col><ion-col bgcolor="' + color1 + '" class="rbtd" style="text-align: center;font-weight: bold;">' + item1 + '<br></ion-col><ion-col bgcolor="' + color3 + '" class="rbtd" style="text-align: center;font-weight: bold;">' + item2 + '<br></ion-col><ion-col style="text-align: center;font-weight: bold;" bgcolor="' + color4 + '" class="rbtd">' + item3 + '<br></ion-col>')
 }
+
+
 
 function addESection(text1, text2) {
-    addToBuffer('<td class="rbtd" style="text-align:left;align-items:center;border:1px solid black;">\
+    addToBuffer('<ion-col class="rbtd" style="text-align:left;align-items:center;border:1px solid black;">\
       \
-   <b>'+text1+'</b>\
-    </td><td class="rbtd" style="text-align:left;align-items:left;border:1px solid black;">'+text2+'</td>')
+   <b>'+ text1 + '</b>\
+    </ion-col><ion-col class="rbtd" style="text-align:left;align-items:left;border:1px solid black;">'+ text2 + '</ion-col>')
 }
 
 function addESubSection(description, color, children) {
-    addToBuffer('<td class="rbtd" style="height:40px;border:1px solid black;color: white !important;" colspan="5" bgcolor="'+color+'">\
-      <div style="display: flex;"><div style="margin-left:5px;flex: 0 0 95%;">  '+description+'   </div> <div style="display:none;text-align:right;color:red;flex:1;margin-right:5px;">  <b style="text-align:right; color:red" id="'+ssecct+description.split(" ")[0]+'"></b>  </div>    \
-    </td>')
-    rbchildren.push([ssecct+description.split(" ")[0],children])
-    ssecct = ssecct+1
+    addToBuffer('<ion-col class="rbtd" style="height:40px;border:1px solid black;color: white !important;background-color:' + color + ';" colspan="5" bgcolor="' + color + '">\
+      <div style="display: flex;"><div style="margin-left:5px;flex: 0 0 95%;">  '+ description + '   </div> <div style="display:none;text-align:right;color:red;flex:1;margin-right:5px;">  <b style="text-align:right; color:red" id="' + ssecct + description.split(" ")[0] + '"></b>  </div> </div>   \
+    </ion-col>')
+    rbchildrenEX.push([ssecct + description.split(" ")[0], children])
+    ssecct = ssecct + 1
 }
 
-function addEStrengths(item1, item2, item3, item4, item5, item6) {
-    addToBuffer('    <fieldset data-role="controlgroup">    <td colspan="5">\
-<input class="rbitem rb'+identifier+'" type="checkbox" id="'+item1.split(" ")[0]+item1.split(" ")[1]+'" name="'+item1.split(" ")[0]+item1.split(" ")[1]+'">\
-<label for="'+item1.split(" ")[0]+item1.split(" ")[1]+'">'+item1+'</label>\
-    <label for="'+item2.split(" ")[0]+item2.split(" ")[1]+'">\
-    '+item2+'\
-            <input class="rbitem rb'+identifier+'" type="checkbox" id="'+item2.split(" ")[0]+item2.split(" ")[1]+'" name="'+item2.split(" ")[0]+item2.split(" ")[1]+'">    </label>\
+function addEStrengths(item1, item2, item3, item4, item5) {
+    addToBuffer('    <fieldset data-role="controlgroup">    <ion-col colspan="5">\
+    <ion-item>\
+<ion-label text-wrap for="'+ item1.split(" ")[0] + '">' + item1 + '</ion-label>\
+<ion-checkbox slot="start"  class="rbitem rb'+ identifier + '" type="checkbox" id="' + item1.split(" ")[0] + '" name="' + item1.split(" ")[0] + '"> </ion-checkbox>\
+</ion-item>\
+   <ion-item> <ion-label text-wrap for="'+ item2.split(" ")[0] + '">\
+    '+ item2 + '</ion-label>\
+            <ion-checkbox slot="start" class="rbitem rb'+ identifier + '" type="checkbox" id="' + item2.split(" ")[0] + '" name="' + item2.split(" ")[0] + '"> </ion-checkbox>  </ion-item> \
     \
-    <label for="'+item3.split(" ")[0]+item3.split(" ")[1]+'">'+item3+'\
-            <input class="rbitem rb'+identifier+'" type="checkbox" id="'+item3.split(" ")[0]+item3.split(" ")[1]+'" name="'+item3.split(" ")[0]+item3.split(" ")[1]+'">    </label>\
-    <label for="'+item4.split(" ")[0]+item4.split(" ")[1]+'">'+item4+'\
-            <input class="rbitem rb'+identifier+'" type="checkbox" id="'+item4.split(" ")[0]+item4.split(" ")[1]+'" name="'+item4.split(" ")[0]+item4.split(" ")[1]+'">    </label>\
-    <!--<label for="'+item5.split(" ")[0]+item5.split(" ")[1]+'">'+item5+'\
-            <input class="rbitem rb'+identifier+'" type="checkbox" id="'+item5.split(" ")[0]+item5.split(" ")[1]+'" name="'+item5.split(" ")[0]+item5.split(" ")[1]+'">    </label>-->\
+    <ion-item>  <ion-label text-wrap for="'+ item3.split(" ")[0] + '">' + item3 + '</ion-label>\
+            <ion-checkbox slot="start" class="rbitem rb'+ identifier + '" type="checkbox" id="' + item3.split(" ")[0] + '" name="' + item3.split(" ")[0] + '">  </ion-checkbox>   </ion-item> \
+            \
+        <ion-item>  <ion-label text-wrap for="'+ item4.split(" ")[0] + '">' + item4 + '</ion-label>\
+        <ion-checkbox slot="start" class="rbitem rb'+ identifier + '" type="checkbox" id="' + item4.split(" ")[0] + '" name="' + item4.split(" ")[0] + '">  </ion-checkbox>   </ion-item>\
+        \
+\
+        \
     \
-    </fieldset>    ')
+    </fieldset>  </ion-col>  ')
 }
+
+// function addEStrengths(item1, item2, item3, item4, item5, item6) {
+//     addToBuffer('    <fieldset data-role="controlgroup">    <td colspan="5">\
+// <input class="rbitem rb'+ identifier + '" type="checkbox" id="' + item1.split(" ")[0] + item1.split(" ")[1] + '" name="' + item1.split(" ")[0] + item1.split(" ")[1] + '">\
+// <label for="'+ item1.split(" ")[0] + item1.split(" ")[1] + '">' + item1 + '</label>\
+//     <label for="'+ item2.split(" ")[0] + item2.split(" ")[1] + '">\
+//     '+ item2 + '\
+//             <input class="rbitem rb'+ identifier + '" type="checkbox" id="' + item2.split(" ")[0] + item2.split(" ")[1] + '" name="' + item2.split(" ")[0] + item2.split(" ")[1] + '">    </label>\
+//     \
+//     <label for="'+ item3.split(" ")[0] + item3.split(" ")[1] + '">' + item3 + '\
+//             <input class="rbitem rb'+ identifier + '" type="checkbox" id="' + item3.split(" ")[0] + item3.split(" ")[1] + '" name="' + item3.split(" ")[0] + item3.split(" ")[1] + '">    </label>\
+//     <label for="'+ item4.split(" ")[0] + item4.split(" ")[1] + '">' + item4 + '\
+//             <input class="rbitem rb'+ identifier + '" type="checkbox" id="' + item4.split(" ")[0] + item4.split(" ")[1] + '" name="' + item4.split(" ")[0] + item4.split(" ")[1] + '">    </label>\
+//     <!--<label for="'+ item5.split(" ")[0] + item5.split(" ")[1] + '">' + item5 + '\
+//             <input class="rbitem rb'+ identifier + '" type="checkbox" id="' + item5.split(" ")[0] + item5.split(" ")[1] + '" name="' + item5.split(" ")[0] + item5.split(" ")[1] + '">    </label>-->\
+//     \
+//     </fieldset>    ')
+// }
 {/* <label for="'+item6.split(" ")[0]+item6.split(" ")[1]+'">'+item6+'\
         <input class="rbitem rb'+identifier+'" type="checkbox" id="'+item6.split(" ")[0]+item6.split(" ")[1]+'" name="'+item6.split(" ")[0]+item6.split(" ")[1]+'">    </label>\
 \ */}
@@ -401,4 +585,18 @@ function addEStrengths(item1, item2, item3, item4, item5, item6) {
 //             <input class="rbitem rb'+identifier+'" type="checkbox" id="' + item3.replace(/\s/g, "") + '" name="' + item3.replace(/\s/g, "") + '">' + item3 + '\
 //     </label>\
 //     </td>')
+// }
+
+
+// Use matchMedia to check the user preference
+// const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+// toggleDarkTheme(prefersDark.matches);
+
+// // Listen for changes to the prefers-color-scheme media query
+// prefersDark.addListener((mediaQuery) => toggleDarkTheme(mediaQuery.matches));
+
+// // Add or remove the "dark" class based on if the media query matches
+// function toggleDarkTheme(shouldAdd) {
+//   document.body.classList.toggle('dark', shouldAdd);
 // }
