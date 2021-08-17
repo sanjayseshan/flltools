@@ -4,9 +4,9 @@
 
 // Defines a blank save for reset
 
-var identifier = ""
-function load2020RP() {
-	identifier = "IP"
+identifier = "IP"
+
+var load2020RP = (function () {
 
 	// Override function in scoring system during the checking for button conflicts
 
@@ -14,12 +14,12 @@ function load2020RP() {
 	clearbuffer()
 
 	// Draw the layout
- 
+
 	addToBuffer("<h1>Innovation Project</h1>")
 	addToBuffer("<p class='no-print'>Instructions: Teams should communicate to the judges their achievement in each of the criteria below. This rubric should be filled out during the Innovation Project presentation.<br><br><b>Judges are required to tick one box on a separate line to indicate the level the team has achieved. If the team exceeds, please make a short comment in the Exceeds box.</b></p>")
 	startRubric()
 
-	startRow()
+	startrow()
 	addLevels("#E9EBF8","#BCC7E7","#8AA4D5","#5484C4","Beginning","Developing","Accomplished","Exceeds","How has the team exceeded?")
 	closeRow()
 
@@ -139,5 +139,5 @@ function load2020RP() {
 	*/
 
 	writebuffer("projectlist")
-}
+})();
 

@@ -55,10 +55,7 @@ function checkbuttonenables(mission, enabled) {
         $('#yes' + enabled).checkboxradio('disable');
         document.getElementById('yes' + enabled).checked = false
         document.getElementById('no' + enabled).checked = true
-        document.getElementById('parent' + enabled).value = "0"
-        console.log(enabled)
-
-        recalc(0, enabled, 0)
+        recalc(0, mission, 0)
     }
 }
 
@@ -86,8 +83,6 @@ function checksliderenables(mission, enabled, value) {
         $('#yes' + enabled).checkboxradio('disable');
         document.getElementById('yes' + enabled).checked = false
         document.getElementById('no' + enabled).checked = true
-        document.getElementById('parent' + enabled).value = "0"
-
         recalc(0, mission, 0)
     }
 }
@@ -102,7 +97,6 @@ function checksliderenables3(mission, enabled, value) {
         $('#yes' + enabled).checkboxradio('disable');
         document.getElementById('yes' + enabled).checked = false
         document.getElementById('no' + enabled).checked = true
-        document.getElementById('parent' + enabled).value = "0"
         recalc(0, enabled, 0)
     }
 }

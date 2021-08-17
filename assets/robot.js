@@ -4,12 +4,20 @@
 
 // Defines a blank save for reset
 
-var identifier = ""
 
+identifier = "RD"
 
+specialCasesComplete = 0
+function specialCasesCheck(mission) {
 
-function load2020RD() {
-	identifier = "RD"
+}
+
+// Override function when calculating points for each mission
+function specialCasesRecalc(mission) {
+	
+}
+
+var load2020RD = (function () {
 
 	// Override function in scoring system during the checking for button conflicts
 
@@ -24,7 +32,7 @@ function load2020RD() {
 	addToBuffer("<p class='no-print'>Instructions: Teams should communicate to the judges their achievement in each of the criteria below. This rubric should be filled out during the Robot Design explanation.<br><br><b>Judges are required to tick one box on a separate line to indicate the level the team has achieved. If the team exceeds, please make a short comment in the Exceeds box.</b></p>")
 	startRubric()
 
-	startRow()
+	startrow()
 	addLevels("#EAF4EB","#C1DFC5","#8DC89A","#46AE6F","Beginning","Developing","Accomplished","Exceeds","How has the team exceeded?")
 
 	closeRow()
@@ -143,5 +151,5 @@ function load2020RD() {
 	*/
 
 	writebuffer("robotlist")
-}
+})();
 
