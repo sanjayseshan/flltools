@@ -504,6 +504,8 @@ function addEStrengths(item1, item2, item3, item4, item5) {
         <ion-item>  <ion-label text-wrap for="'+ item4.split(" ")[0] + '">' + item4 + '</ion-label>\
         <ion-checkbox slot="start" class="rbitem rb'+ identifier + '" type="checkbox" id="' + item4.split(" ")[0] + '" name="' + item4.split(" ")[0] + '">  </ion-checkbox>   </ion-item>\
         \
+        <ion-item>  <ion-label text-wrap for="'+ item5.split(" ")[0] + '">' + item5 + '</ion-label>\
+        <ion-checkbox slot="start" class="rbitem rb'+ identifier + '" type="checkbox" id="' + item5.split(" ")[0] + '" name="' + item5.split(" ")[0] + '">  </ion-checkbox>   </ion-item>\
 \
         \
     \

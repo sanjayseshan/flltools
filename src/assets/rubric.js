@@ -27,7 +27,13 @@ function load2020EX() {
 	// Draw the layout
 
 	addToBuffer("<h1>Reviewing Sheet</h1>")
-	addToBuffer("<p>Instructions: Reviewers are required to tick one box on each separate line to indicate the team’s achievement.")
+	addToBuffer("<p>Instructions: Reviewers are required to tick one box on each separate line to indicate the team’s achievement.</p>")
+	addToBuffer("<b>Reviewing Criteria:</b>")
+	addToBuffer(`
+<p>Beginning: This item was beginning to develop in the team’s model, poster, presentation, or answers.</p>
+<p>Accomplished: The team clearly showed this item in their model, poster, presentation, or answers.</p>
+<p>Exceeds: The team went above and beyond the challenge in this area.</p>
+	`)
 
 	addToBuffer('<div id="tabs-1">')
 	addEStrengths(
@@ -35,7 +41,7 @@ function load2020EX() {
 		"Team Poster Award - These teams showed creativity on their team poster and clearly explained what they had learned through their FIRST(R) LEGO(R) League Explore team journey",
 		"Core Values Award - These teams demonstrated great teamwork as they explored the challenge, showing they fully understood the FIRST® Core Values.",
 		"Team Model Award - These teams displayed innovation and creativity through the design and building of their team models.",
-		""
+		"Challenge Solution Award - These teams showed excellent problem-solving skills to create an innovative and helpful solution to the challenge."
 	)
 	addToBuffer('</div>')
 
