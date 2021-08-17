@@ -1,0 +1,48 @@
+<ion-app>
+    <ion-menu persistent="true" id="mainNav" side="start" menu-id="first" contentId="mainContent1">
+        <ion-header>
+            <ion-toolbar color="primary">
+
+                <ion-title>Navigation</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list>
+
+                <ion-item routerLink="/home">Home</ion-item>
+                <ion-item routerLink="/scorer">FLL CARGO CONNECT Scorer</ion-item>
+                <ion-item routerLink="/drawplan">FLL CARGO CONNECT Strategy Planner</ion-item>
+                <ion-item routerLink="/rubrics">FLL Judging Rubrics</ion-item>
+                <ion-item routerLink="/explore">FLL Explore Review Sheet</ion-item>
+                <ion-item>
+                    <div class="right" id="flags">
+                    </div>
+                </ion-item>
+                <!-- <ion-item><br><img class="" alt="FLL Tutorials" src="assets/images/flltutorials.png" width="120"><br></ion-item> -->
+                <!-- <ion-menu-toggle auto-hide="true">
+                <ion-item [routerLink]="pages.url" routerDirection="forward">
+                    <ion-icon [name]="pages.icon" slot="start"></ion-icon> -->
+                <!-- {{pages.title}} -->
+                <!-- </ion-item> -->
+                <!-- </ion-menu-toggle> -->
+            </ion-list>
+
+
+
+
+
+            <!-- <div class="center">
+            <div class="bottom-bar__line-height" style="text-align: center;"> <i id="pointsTxt"></i><i>:<text>
+                    </text> </i>
+            </div> -->
+
+
+            <!-- </div> -->
+
+
+        </ion-content>
+    </ion-menu>
+    <div class="ion-page" id="mainContent1" main>
+
+    <ion-router-outlet></ion-router-outlet></div>
+</ion-app>

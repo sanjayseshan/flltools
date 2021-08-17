@@ -1,0 +1,6 @@
+{
+	"appId": "com.ev3lessons.flltools",
+	"appName": "FLL Tools",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

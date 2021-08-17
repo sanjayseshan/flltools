@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        language = "en";
+        function fixedEncodeURIComponent(str) {
+            return encodeURIComponent(str).replace(/[!'()*]/g, function (c) {
+                return '%' + c.charCodeAt(0).toString(16);
+            });
+        }
+    </script>
+    <script src="download.js"></script>
+    <script src="languages.js"></script>
+
+</head>
+
+<body style="margin: 10px;">
+    <h1>FLL Tools Translator</h1>
+    <p>Note: the save button is at the bottom of this page. You can reload save files if you do not complete all the translations at once.</p>
+
+    <h3>Your Information</h3>
+    <table border=1 width="100%">
+        <tr style="background-color: yellow;">
+            <td>Content</td>
+            <td width="60%">Answer</td>
+        </tr>
+        <script>
+            info = getMainDict("info")
+            dict = info
+            var keys = Object.keys(dict);
+            for (i = 0; i < keys.length; i++) {
+                document.write("<tr>")
+                document.write("<td>")
+                document.write(keys[i])
+                document.write("</td>")
+                document.write("<td>")
+
+                document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' placeholder=\""+dict[keys[i]]+"\"></textarea>")
+                document.write("</td>")
+                document.write("</tr>")
+            }
+        </script>
+    </table>
+    <h3>Basic Content</h3>
+    <table border=1 width="100%">
+        <tr style="background-color: yellow;">
+            <td>English</td>
+            <td width="60%">Translation</td>
+        </tr>
+        <script>
+            basic = getMainDict("basic")
+            dict = basic
+            var keys = Object.keys(dict);
+            for (i = 0; i < keys.length; i++) {
+                document.write("<tr>")
+                document.write("<td>")
+                document.write(keys[i])
+                document.write("</td>")
+                document.write("<td>")
+
+                document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' placeholder=\""+dict[keys[i]]+"\"></textarea>")
+                document.write("</td>")
+                document.write("</tr>")
+            }
+        </script>
+    </table>
+
+    <h3>Scorer</h3>
+    <table border=1 width="100%">
+        <tr style="background-color: yellow;">
+            <td>English</td>
+            <td width="60%">Translation</td>
+        </tr>
+        <script>
+            scorer = getMainDict("scorer")
+            dict = scorer
+            var keys = Object.keys(dict);
+            for (i = 0; i < keys.length; i++) {
+                document.write("<tr>")
+                document.write("<td>")
+                document.write(keys[i])
+                document.write("</td>")
+                document.write("<td>")
+
+                document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' placeholder=\""+dict[keys[i]]+"\"></textarea>")
+                document.write("</td>")
+                document.write("</tr>")
+            }
+        </script>
+    </table>
+
+    <h3>Rubrics</h3>
+    <table border=1 width="100%">
+        <tr style="background-color: yellow;">
+            <td>English</td>
+            <td width="60%">Translation</td>
+        </tr>
+        <script>
+            rubrics = getMainDict("rubrics")
+            dict = rubrics
+            var keys = Object.keys(dict);
+            for (i = 0; i < keys.length; i++) {
+                document.write("<tr>")
+                document.write("<td>")
+                document.write(keys[i])
+                document.write("</td>")
+                document.write("<td>")
+
+                document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' placeholder=\""+dict[keys[i]]+"\"></textarea>")
+                document.write("</td>")
+                document.write("</tr>")
+            }
+        </script>
+    </table>
+
+    <h3>FLL Explore</h3>
+    <table border=1 width="100%">
+        <tr style="background-color: yellow;">
+            <td>English</td>
+            <td width="60%">Translation</td>
+        </tr>
+        <script>
+            explore = getMainDict("explore")
+            dict = explore
+            var keys = Object.keys(dict);
+            for (i = 0; i < keys.length; i++) {
+                document.write("<tr>")
+                document.write("<td>")
+                document.write(keys[i])
+                document.write("</td>")
+                document.write("<td>")
+
+                document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' placeholder=\""+dict[keys[i]]+"\"></textarea>")
+                document.write("</td>")
+                document.write("</tr>")
+            }
+        </script>
+    </table>
+    <script>
+        fulldict = {}
+        Object.keys(info).forEach(key => fulldict[key] = info[key]);
+        Object.keys(basic).forEach(key => fulldict[key] = basic[key]);
+        Object.keys(scorer).forEach(key => fulldict[key] = scorer[key]);
+        Object.keys(rubrics).forEach(key => fulldict[key] = rubrics[key]);
+        Object.keys(explore).forEach(key => fulldict[key] = explore[key]);
+        var fullkeys = Object.keys(fulldict);
+
+        function save() {
+            newDict = {}
+            for (i = 0; i < fullkeys.length; i++) {
+                console.log(fullkeys[i], fixedEncodeURIComponent(fullkeys[i]))
+                if (document.getElementById(fixedEncodeURIComponent(fullkeys[i])).value.trim() != "") {
+                    newDict[fullkeys[i]] = document.getElementById(fixedEncodeURIComponent(fullkeys[i])).value.trim()
+                }
+            }
+            download(JSON.stringify(newDict), document.getElementById(fixedEncodeURIComponent("Translated Language")).value + ".json", "text/plain");
+            return newDict
+        }
+
+        function browsersave() {
+            newDict = {}
+            for (i = 0; i < fullkeys.length; i++) {
+                // console.log(fullkeys[i], fixedEncodeURIComponent(fullkeys[i]))
+                if (document.getElementById(fixedEncodeURIComponent(fullkeys[i])).value.trim() != "") {
+                    newDict[fullkeys[i]] = document.getElementById(fixedEncodeURIComponent(fullkeys[i])).value.trim()
+                }
+            }
+            svtxt = JSON.stringify(newDict)
+            window.localStorage.translationSave = svtxt;
+            console.log("Auto saving")
+            return newDict
+        }
+
+
+        function load(data) {
+            mysave = JSON.parse(data)
+            savekeys = Object.keys(mysave);
+            for (i = 0; i < savekeys.length; i++) {
+                console.log(savekeys[i], fixedEncodeURIComponent(savekeys[i]))
+                try {
+                    document.getElementById(fixedEncodeURIComponent(savekeys[i])).value = mysave[savekeys[i]]
+                } catch { }
+            }
+            alert("Loaded")
+        }
+
+        function browserload() {
+            mysave = JSON.parse(window.localStorage.translationSave)
+            savekeys = Object.keys(mysave);
+            for (i = 0; i < savekeys.length; i++) {
+                console.log(savekeys[i], fixedEncodeURIComponent(savekeys[i]))
+                try {
+                    document.getElementById(fixedEncodeURIComponent(savekeys[i])).value = mysave[savekeys[i]]
+                } catch { }
+            }
+            // alert("Loaded")
+        }
+        try{browserload()}
+        catch{}
+    </script>
+    <br><br><br>
+    <div style="border:1px solid black; ">
+        <div style="margin:10px">
+            <h3>Save Translations</h3>
+            <p>You can save and reload your translations. Once completed, please email the save file to <a
+                    href="mailto:team@ev3lessons.com">team@ev3lessons.com</a>.</p>
+            <button class="btn btn-primary" onclick="save();">Save</button>
+            <br><br>
+            <b>Load save:</b> <input type="file" class="form-control" id="fileInput" accept=".json">
+        </div>
+    </div>
+    <script>
+        var fileInputT = document.getElementById('fileInput');
+
+        fileInputT.addEventListener('change', function (e) {
+            var file = fileInputT.files[0];
+            var textType = /text.*/;
+
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                data = reader.result;
+                //alert(data)
+
+                load(data)
+            }
+
+            reader.readAsText(file);
+
+        });
+    </script>
+</body>
+
+</html>

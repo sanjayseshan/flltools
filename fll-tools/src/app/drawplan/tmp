@@ -1,0 +1,236 @@
+ <ion-content class="has-tabs-top has-tabs has-header ion-padding">
+
+      <div style="padding-left: 0px; " id="tabs-4">
+        <div id="content">
+          <img id="mat" width="1024" style="display:none;width:1024;
+height:auto;position: fixed;    bottom: -10000;   left: -100000" alt="The Mat">
+          <script>document.getElementById("mat").src = matimage;</script>
+          <img style="display:none;" id="tmpimgholder">
+
+          <canvas style="display:none" id="tmpCanvas" width="778" height="389"></canvas>
+
+          <a style="display:none" download="myPlan.png" target="_blank" href="" id="downloadPic">Download to
+            myImage.jpg</a>
+
+          <div class="content-box">
+            <!-- jQuery UI -->
+            <script type="text/javascript" src="assets/./lib/jquery.ui.core.1.10.3.min.js"></script>
+            <script type="text/javascript" src="assets/./lib/jquery.ui.widget.1.10.3.min.js"></script>
+            <script type="text/javascript" src="assets/./lib/jquery.ui.mouse.1.10.3.min.js"></script>
+            <script type="text/javascript" src="assets/./lib/jquery.ui.draggable.1.10.3.min.js"></script>
+
+            <!-- wColorPicker -->
+            <link rel="Stylesheet" type="text/css" href="assets/./lib/wColorPicker.min.css" />
+            <script type="text/javascript" src="assets/./lib/wColorPicker.min.js"></script>
+
+            <!-- wPaint -->
+            <link rel="Stylesheet" type="text/css" href="assets/./wPaint.min.css" />
+            <script type="text/javascript" src="assets/./wPaint.min.js"></script>
+            <script type="text/javascript" src="assets/./plugins/main/wPaint.menu.main.min.js"></script>
+            <script type="text/javascript" src="assets/./plugins/text/wPaint.menu.text.min.js"></script>
+            <script type="text/javascript" src="assets/./plugins/shapes/wPaint.menu.main.shapes.min.js"></script>
+            <script type="text/javascript" src="assets/./plugins/file/wPaint.menu.main.file.min.js"></script>
+
+
+
+
+          </div>
+          <!-- <table>
+      <tr>
+        <td style="max-width:40px">         -->
+          <div style="border-color: black; border-width: 2px;" data-type="horizontal" data-role="controlgroup"
+            style="position:relative;">
+
+
+            <ion-button data-inline="true" class="ion-button toolDraw dpTool"
+              onclick="changecolor(this);$('#wPaint').wPaint('setStrokeStyle','yellow');$('#wPaint').wPaint('setLineWidth',3);"
+              style=" --background: yellow!important; 
+                                 background-size: contain; width: 30px; height: 30px;  background-position: center;
+                                 background-repeat: no-repeat;"> </ion-button>
+
+            <ion-button data-inline="true" class="ion-button toolDraw dpTool"
+              onclick="changecolor(this);$('#wPaint').wPaint('setStrokeStyle','green');$('#wPaint').wPaint('setLineWidth',3);"
+              style=" --background: green!important; width: 30px; height: 30px;   background-size: contain;  background-position: center;
+                                background-repeat: no-repeat;"> </ion-button>
+
+            <ion-button class="ion-button toolDraw dpTool"
+              onclick="changecolor(this);$('#wPaint').wPaint('setStrokeStyle','red');$('#wPaint').wPaint('setLineWidth',3);"
+              style=" --background: red!important; width: 30px; height: 30px;   background-size: contain;  background-position: center;
+                             background-repeat: no-repeat;"> </ion-button>
+            <ion-button class="ion-button toolDraw dpTool"
+              onclick="changecolor(this);$('#wPaint').wPaint('setStrokeStyle','blue');$('#wPaint').wPaint('setLineWidth',3);"
+              style=" --background: blue!important; width: 30px; height: 30px;   background-size: contain;  background-position: center;
+                              background-repeat: no-repeat;"> </ion-button>
+            <ion-button class="ion-button toolDraw dpTool"
+              onclick="changecolor(this);$('#wPaint').wPaint('setStrokeStyle','orange');$('#wPaint').wPaint('setLineWidth',3);"
+              style=" --background: orange!important; width: 30px; height: 30px;   background-size: contain;  background-position: center;
+                          background-repeat: no-repeat;"> </ion-button>
+            <ion-button class="ion-button toolDraw dpTool"
+              onclick="changecolor(this);$('#wPaint').wPaint('setStrokeStyle','brown');$('#wPaint').wPaint('setLineWidth',3);"
+              style=" --background: brown!important; width: 30px; height: 30px;   background-size: contain;  background-position: center;
+                               background-repeat: no-repeat;"> </ion-button>
+            <ion-button class="ion-button toolDraw dpTool"
+              onclick="changecolor(this);$('#wPaint').wPaint('setStrokeStyle','black');$('#wPaint').wPaint('setLineWidth',3); toolDraw"
+              style=" --background: black!important; width: 30px; height: 30px;   background-size: contain;  background-position: center;
+                               background-repeat: no-repeat;"> </ion-button>
+            <ion-button class="ion-button toolDraw dpTool"
+              onclick="changecolor(this);$('#wPaint').wPaint('setStrokeStyle','white');$('#wPaint').wPaint('setLineWidth',3);"
+              style=" --background: white!important; width: 30px; height: 30px;   background-size: contain;  background-position: center;
+                               background-repeat: no-repeat;"> </ion-button>
+            <ion-button class="ion-button dpTool" onclick="$('#wPaint').wPaint('clear');" style="background: url(assets/images/clear.png);  --background: grey !important;width: 30px; height: 30px;   background-size: contain;  background-position: center;
+            background-repeat: no-repeat;"> </ion-button>
+            <ion-button class="ion-button toolEdit dpTool"
+              onclick="drawmode='eraser'; changeedit(this); $('#wPaint').wPaint('setMode','eraser');$('#wPaint').wPaint('setLineWidth',10);"
+              style="background: url(assets/images/eraser-icon-5.png);  --background: grey !important;width: 30px; height: 30px;   background-size: contain;  background-position: center;
+             background-repeat: no-repeat;"> </ion-button>
+            <ion-button class="ion-button dpTool" onclick="$('#wPaint').wPaint('undo');" style="background: url(assets/images/undo.png);  --background: grey !important;width: 30px; height: 30px;   background-size: contain;  background-position: center;
+                 background-repeat: no-repeat;"> </ion-button>
+            <ion-button class="ion-button dpTool" onclick="$('#wPaint').wPaint('redo');" style="background: url(assets/images/redo.png);  --background: grey !important;width: 30px; height: 30px;   background-size: contain;  background-position: center;
+                 background-repeat: no-repeat;"> </ion-button>
+            <ion-button class="ion-button toolEdit dpTool"
+              onclick="drawmode='pencil';changeedit(this); $('#wPaint').wPaint('setMode','pencil'); $('#wPaint').wPaint('setLineWidth',3);"
+              style="width: 30px; height: 30px;">
+              <ion-icon name="pencil-outline"></ion-icon>
+
+            </ion-button>
+            <ion-button class="ion-button toolEdit dpTool"
+              onclick="drawmode='line';changeedit(this);$('#wPaint').wPaint('setMode','line'); $('#wPaint').wPaint('setLineWidth',3);"
+              style="width: 30px; height: 30px;   ">
+              <ion-icon name="pencil-outline"></ion-icon>
+            </ion-button>
+            <ion-button class="ion-button toolEdit dpTool"
+              onclick="drawmode='rectangle';changeedit(this);$('#wPaint').wPaint('setMode','rectangle'); $('#wPaint').wPaint('setLineWidth',3);$('#wPaint').wPaint('setFillStyle','transparent');"
+              style="background: url(assets/images/rectangle.png);  --background: grey !important;width: 30px; height: 30px;   background-size: contain;  background-position: center;
+                                           background-repeat: no-repeat;"> </ion-button>
+            <ion-button class="ion-button toolEdit dpTool"
+              onclick="drawmode='text';changeedit(this);$('#wPaint').wPaint('setMode','text'); $('#wPaint').wPaint('setFontSize','25');$('#wPaint').wPaint('setFillStyle','red');"
+              style="background: url(assets/images/text.png);  --background: grey !important;width: 30px; height: 30px;   background-size: contain;  background-position: center;
+                                      background-repeat: no-repeat;"> </ion-button>
+            <ion-button class="ion-button dpTool" onclick='$( "#popupMap" ).popup( "open" );' style="background: url(assets/images/save.png);  --background: white !important;width: 30px; height: 30px;   background-size: contain;  background-position: center;
+                                     background-repeat: no-repeat;"> </ion-button>
+          </div>
+          <!-- </td>
+        <td>
+          
+-->
+          <a style="display:none;" id="saveMenu" href="#popupMap" data-rel="popup" data-position-to="window"
+            data-role="ion-button" data-theme="a" data-inline="true" aria-haspopup="true" aria-owns="popupMap"
+            aria-expanded="false" class="ui-link ui-btn ui-btn-a ui-btn-inline ui-shadow ui-corner-all ui-mini"
+            role="ion-button">Open
+            Saves</a>
+
+
+          <div id="wPaint"
+            style="position:relative;   width:2333px; height:1166px!important; top:10px;height:auto; background-color:#7a7a7a;margin-top:20px;">
+
+            <!-- height="100%" width="100%"-->
+            <div id="container">
+              <img src="assets/images/head.jpg" style="width: 100%;  height:auto;">
+              <div id="holder">
+              </div>
+            </div>
+          </div>
+          <!-- <script type="text/javascript" language="javascript">
+              
+
+              </script> -->
+        </div>
+        <!-- </td>
+</tr>
+</table> -->
+        <div style="width: 30em; height: 30em;" data-role="popup" id="popupMap" data-overlay-theme="b" data-theme="b"
+          data-corners="false" data-tolerance="15,15">
+          <h2><text id="drawingsText">Drawings</text></h2>
+
+          <a href="#" data-rel="back" data-role="ion-button" data-theme="b" data-icon="delete" data-iconpos="notext"
+            class="ui-btn-right">Close</a>
+          <div style="margin:5px">
+            <ion-button class="ion-button"
+              onclick="svimg(); mymaxDP = window.localStorage.canvasImage2021.split('|').length-1; alert(doneText)"
+              data-inline="true" style=""><text id="saveDrawingText">Save Drawing</text></ion-button>
+            <ion-button
+              onclick="window.localStorage.canvasImage2021 = ''; document.getElementById('saveidDP').max = 1 ; showPastDraws();alert(doneText);"
+              data-inline="true"><text id="deleteSavedDrawingsText">Delete All Saved Drawings</text></ion-button>
+
+            <br>
+
+            <table>
+              <tr>
+                <td>
+                  <ion-button data-inline="true" onclick="
+       loadsaveDP(window.localStorage.canvasImage2021.split('|')[parseInt(document.getElementById('saveidDP').value)]);
+       loadsaveDP(window.localStorage.canvasImage2021.split('|')[parseInt(document.getElementById('saveidDP').value)]);
+       setTimeout(function() {
+       loadsaveDP(window.localStorage.canvasImage2021.split('|')[parseInt(document.getElementById('saveidDP').value)]);
+       }, 200);
+       alert(doneText);
+       "><text id="loadSavedDrawingText">Load saved drawing</text></ion-button>
+                </td>
+                <td>
+                  <script>
+                    if (window.localStorage.canvasImage2021 == undefined) {
+                      window.localStorage.canvasImage2021 = ''
+                    }
+                    mymaxDP = window.localStorage.canvasImage2021.split('|').length - 1;
+                  </script>
+                  <input id="saveidDP" type="text" data-inline="true" data-role="spinbox"
+                    onchange="if (mymaxDP < this.value) {this.value = mymaxDP} " min="1" value="1">
+                </td>
+
+              </tr>
+            </table>
+
+            <br>
+            <br>
+            <div id="drawSaveShare" class="">
+              <!-- <a style="display:none; position: fixed;    bottom: -10000;   left: -100000;" id="exportDP"
+                          href="#">Export
+                          Saves</a> -->
+              <ion-button data-inline="true" class="ui-mini no-mobile" onclick="downloadSaves()"><text
+                  id="exportSavedDrawingsText">Export
+                  Saved Drawings</text></ion-button>
+              <script type="text/javascript">
+                // var anchor = document.getElementById('exportDP');
+                // anchor.onclick = function () {
+                //     var currentTime = new Date()
+                //     var day = currentTime.getDate()
+                //     anchor.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(window.localStorage.canvasImage2021);
+                //     anchor.download = day + 'mydrawings.DRCI';
+                //     //     setTimeout(function(){   ;  anchor.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(window.localStorage.DRAA1scorer);    anchor.download = day + 'myscores.AA1EV3';}, 50)
+                // };
+                function downloadSaves() {
+                  download(window.localStorage.canvasImage2021, "mydrawings.DRCI", "text/plain")
+                }
+              </script>
+
+              <ion-button class="ui-mini no-mobile" data-inline="true" onclick="// alert('choose .DRCI file') ;
+                  document.getElementById('fileInputDP').click() "><text id="importSavedDrawingsText">Import
+                  Saved
+                  Drawings</text></ion-button>
+
+              <ion-button data-inline="true" class="" onclick="exporter();"><text id="exportPNGText">Export Drawing
+                  as PNG</text></ion-button>
+              <input onchange="" style=" display:none; position: fixed;    bottom: -10000;   left: -100000; "
+                type="file" id="fileInputDP" accept=".DRCI"><br>
+              <!--Drawplan Scoring System Version 4.2.0 scorer<br>-->
+            </div>
+
+            <div id="pastDraws"> </div>
+
+          </div>
+        </div>
+
+        <center>
+          <article>
+
+            <p><input style="position: fixed; top:-100px;" id="imageLoader" name="imageLoader" type="file">
+            </p>
+            <i style="display: none;" id="status">File API &amp; FileReader API not supported</i>
+          </article>
+        </center>
+
+        <center id="wPaint-img"></center>
+
+
+      </div>
+      </ion-content>
