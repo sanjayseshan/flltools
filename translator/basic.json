@@ -5,7 +5,6 @@
     "Completely": "Completamente",
     "Reset": "Reiniciar",
     "Save": "Guardar",
-    "Save Saves": "Guardar Guardados",
     "Load Save": "Cargar Guardado",
     "Delete All Saved Scores": "Eliminar Todos los Guardados",
     "Import Shared Scores": "Importar Puntaciones Compartidos",
@@ -73,5 +72,8 @@
     "Download Current Innovation Project Rubric": "(ES)Download Current Innovation Project Rubric",
     "Download Current Robot Design Rubric": "(ES)Download Current Robot Design Rubric",
     "Download Current Rubric":"(ES)Download Current Rubric",
-    "Past Reviewing Sheets":"(ES)Past Reviewing Sheets"
+    "Past Reviewing Sheets":"(ES)Past Reviewing Sheets",
+    "Scoring tool, Strategy planner, and Rubrics for the FLL Season!":"(ES)Scoring tool, Strategy planner, and Rubrics for the FLL Season!",
+    "This app is an all-in-one FLL tool for your team. It features an advanced scoring tool for FLL Challenge, an FLL Strategy Planner, the FLL Rubrics, and the FLL Explore Reviewing Sheet.\n\nThe scorer features a built-in advanced error checking system to prevent you from incorrectly scoring your missions. The scorer is kept up-to-date to reflect any rule updates to the CARGO CONNECT robot game. You can save the scores and view your progress.\n\nThe built-in strategy planner allows you to map out your robot runs virtually. You can save and share your plans with teammates.\n\nThe rubrics help you self-evaluate your team's performance in Robot Design, Innovation Project, and Core Values periodically throughout the season. You can score yourself on digital rubrics and save the scores. You can later re-load the rubric to track your performance. The FLL Explore Reviewing Sheet functions similarly.":"(ES)This app is an all-in-one FLL tool for your team. It features an advanced scoring tool for FLL Challenge, an FLL Strategy Planner, the FLL Rubrics, and the FLL Explore Reviewing Sheet.\n\nThe scorer features a built-in advanced error checking system to prevent you from incorrectly scoring your missions. The scorer is kept up-to-date to reflect any rule updates to the CARGO CONNECT robot game. You can save the scores and view your progress.\n\nThe built-in strategy planner allows you to map out your robot runs virtually. You can save and share your plans with teammates.\n\nThe rubrics help you self-evaluate your team's performance in Robot Design, Innovation Project, and Core Values periodically throughout the season. You can score yourself on digital rubrics and save the scores. You can later re-load the rubric to track your performance. The FLL Explore Reviewing Sheet functions similarly."
+
 }
