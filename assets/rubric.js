@@ -5,14 +5,6 @@
 // Defines a blank save for reset
 
 specialCasesComplete = 0
-function specialCasesCheck(mission) {
-
-}
-
-// Override function when calculating points for each mission
-function specialCasesRecalc(mission) {
-	
-}
 
 var identifier = "";
 

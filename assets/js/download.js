@@ -3,6 +3,8 @@ function download(data, filename, type) {
     var platforms = Ionic.platforms;
     if (platforms.includes("capacitor") && platforms.includes("android")) {
         alert(Android.sendData(data, filename));
+    } else if (platforms.includes("capacitor") && platforms.includes("ios")) {
+        window.webkit.messageHandlers.textSaver.postMessage(filename+"_@_"+data)
     } else {
         var file = new Blob([data], {
             type: type
@@ -44,6 +46,21 @@ function exporter() {
         //    link.href = imgCanvas.toDataURL("image/jpg");
         //    link.click()
         alert(Android.sendImgData(imgCanvas.toDataURL("image/png").split("data:image/png;base64,")[1], "myimage.png"));
+    } else if (platforms.includes("capacitor") && platforms.includes("ios")) {
+        realimgCanvas = document.getElementById('wPaint-canvas');
+        imgCanvas = document.getElementById('tmpCanvas');
+        imgAsDataURL = imgCanvas.toDataURL("image/png");
+        var ctx = imgCanvas.getContext("2d");
+    
+        img = document.getElementById("mat");
+        ctx.drawImage(img, 0, 0, tmpCanvas.width, tmpCanvas.height);
+    
+        var origCtx = imgCanvas.getContext('2d');
+    
+        ctx.drawImage(realimgCanvas, 0, 0, tmpCanvas.width, tmpCanvas.height);
+    
+        window.webkit.messageHandlers.jsHandler.postMessage(imgCanvas.toDataURL("image/jpg"));
+    
     } else {
         realimgCanvas = document.getElementById('wPaint-canvas');
         imgCanvas = document.getElementById('tmpCanvas');
