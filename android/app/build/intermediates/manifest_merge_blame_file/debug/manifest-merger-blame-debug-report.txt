@@ -1,0 +1,90 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.ev3lessons.flltools"
+4    android:versionCode="5"
+5    android:versionName="1.2" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml
+10
+11    <!-- Permissions -->
+12
+13    <uses-permission android:name="android.permission.INTERNET" />
+13-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:40:5-67
+13-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:40:22-64
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- for your file, say a pdf to work -->
+14-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:41:3-79
+14-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:41:20-76
+15    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+15-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:42:3-79
+15-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:42:20-77
+16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+16-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:43:3-77
+16-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:43:20-75
+17    <uses-permission android:name="android.permission.VIBRATE" />
+17-->[:capacitor-haptics] /home/sanjay/Github/flltools/node_modules/@capacitor/haptics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-66
+17-->[:capacitor-haptics] /home/sanjay/Github/flltools/node_modules/@capacitor/haptics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-63
+18
+19    <application
+19-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:5:5-36:19
+20        android:allowBackup="true"
+20-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:6:9-35
+21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+21-->[androidx.core:core:1.3.2] /home/sanjay/.gradle/caches/transforms-3/2affdb6e6a1314389bbf6c67f425b6c6/transformed/core-1.3.2/AndroidManifest.xml:24:18-86
+22        android:debuggable="true"
+23        android:icon="@mipmap/ic_launcher"
+23-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:7:9-43
+24        android:label="@string/app_name"
+24-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:8:9-41
+25        android:roundIcon="@mipmap/ic_launcher_round"
+25-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:9:9-54
+26        android:supportsRtl="true"
+26-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:10:9-35
+27        android:theme="@style/AppTheme" >
+27-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:11:9-40
+28        <activity
+28-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:13:9-25:20
+29            android:name="com.ev3lessons.flltools.MainActivity"
+29-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:15:13-64
+30            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+30-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:14:13-129
+31            android:label="@string/title_activity_main"
+31-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:16:13-56
+32            android:launchMode="singleTask"
+32-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:18:13-44
+33            android:theme="@style/AppTheme.NoActionBarLaunch" >
+33-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:17:13-62
+34            <intent-filter>
+34-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:20:13-23:29
+35                <action android:name="android.intent.action.MAIN" />
+35-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:21:17-69
+35-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:21:25-66
+36
+37                <category android:name="android.intent.category.LAUNCHER" />
+37-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:22:17-77
+37-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:22:27-74
+38            </intent-filter>
+39        </activity>
+40
+41        <provider
+42            android:name="androidx.core.content.FileProvider"
+42-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:28:13-62
+43            android:authorities="com.ev3lessons.flltools.fileprovider"
+43-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:29:13-64
+44            android:exported="false"
+44-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:30:13-37
+45            android:grantUriPermissions="true" >
+45-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:31:13-47
+46            <meta-data
+46-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:32:13-34:64
+47                android:name="android.support.FILE_PROVIDER_PATHS"
+47-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:33:17-67
+48                android:resource="@xml/file_paths" />
+48-->/home/sanjay/Github/flltools/android/app/src/main/AndroidManifest.xml:34:17-51
+49        </provider>
+50    </application>
+51
+52</manifest>

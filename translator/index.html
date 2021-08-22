@@ -21,132 +21,223 @@
 <body style="margin: 10px;">
     <h1>FLL Tools Translator</h1>
     <p>
-        Most content should be copied directly from the FIRST LEGO League challenge documents (some with with minor edits). It is okay if you do not have the time to translate all the sections - we will use any help given. However, please complete "Your Information", "Basic Content" and at least one other section.
+        Most content should be copied directly from the FIRST LEGO League challenge documents (some with with minor
+        edits). It is okay if you do not have the time to translate all the sections - we will use any help given. Please complete as many as you can.
     </p>
-    <p>Note: the <a href="#anchor-name">Save Button</a> is at the bottom of this page. You can reload save files if you do not complete all the translations at once. Please email your final save file to <a
-        href="mailto:team@ev3lessons.com">team@ev3lessons.com</a>.</p>
+    <p>Note: the <a href="#anchor-name">Save Button</a> is at the bottom of this page. You can reload save files if you
+        do not complete all the translations at once. Please email your final save file to <a
+            href="mailto:team@ev3lessons.com">team@ev3lessons.com</a>.</p>
 
-    <h3>Your Information</h3>
-    <table border=1 width="100%">
-        <tr style="background-color: yellow;">
-            <td>Content</td>
-            <td width="60%">Answer</td>
-        </tr>
-        <script>
-            info = getMainDict("info")
-            dict = info
-            var keys = Object.keys(dict);
-            for (i = 0; i < keys.length; i++) {
-                document.write("<tr>")
-                document.write("<td>")
-                document.write(keys[i])
-                document.write("</td>")
-                document.write("<td>")
+            
+    <style>
+        ul.tab {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
 
-                document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' placeholder=\""+dict[keys[i]]+"\"></textarea>")
-                document.write("</td>")
-                document.write("</tr>")
-            }
-        </script>
-    </table>
+        /* Float the list items side by side */
+        ul.tab li {
+            float: left;
+        }
 
+        /* Style the links inside the list items */
+        ul.tab li a {
+            display: inline-block;
+            /* color: black; */
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 17px;
+        }
 
-    <h3>Basic Content</h3>
-    <table border=1 width="100%">
-        <tr style="background-color: yellow;">
-            <td>English</td>
-            <td width="60%">Translation</td>
-        </tr>
-        <script>
-            basic = getMainDict("basic")
-            dict = basic
-            var keys = Object.keys(dict);
-            for (i = 0; i < keys.length; i++) {
-                document.write("<tr>")
-                document.write("<td>")
-                document.write(keys[i])
-                document.write("</td>")
-                document.write("<td>")
+        /* Change background color of links on hover */
+        ul.tab li a:hover {
+            background-color: #ddd;
+        }
 
-                document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\""+dict[keys[i]]+"\"></textarea>")
-                document.write("</td>")
-                document.write("</tr>")
-            }
-        </script>
-    </table>
+        /* Create an active/current tablink class */
+        ul.tab li a:focus,
+        .active {
+            background-color: #ccc;
+        }
 
-    <h3>Scorer</h3>
-    <table border=1 width="100%">
-        <tr style="background-color: yellow;">
-            <td>English</td>
-            <td width="60%">Translation</td>
-        </tr>
-        <script>
-            scorer = getMainDict("scorer")
-            dict = scorer
-            var keys = Object.keys(dict);
-            for (i = 0; i < keys.length; i++) {
-                document.write("<tr>")
-                document.write("<td>")
-                document.write(keys[i])
-                document.write("</td>")
-                document.write("<td>")
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+            -webkit-animation: fadeEffect 0.25s;
+            animation: fadeEffect 0.25s;
+            /* Fading effect takes 1 second */
+        }
 
-                document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\""+dict[keys[i]]+"\"></textarea>")
-                document.write("</td>")
-                document.write("</tr>")
-            }
-        </script>
-    </table>
+        @-webkit-keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
 
 
-    <h3>Rubrics</h3>
-    <table border=1 width="100%">
-        <tr style="background-color: yellow;">
-            <td>English</td>
-            <td width="60%">Translation</td>
-        </tr>
-        <script>
-            rubrics = getMainDict("rubrics")
-            dict = rubrics
-            var keys = Object.keys(dict);
-            for (i = 0; i < keys.length; i++) {
-                document.write("<tr>")
-                document.write("<td>")
-                document.write(keys[i])
-                document.write("</td>")
-                document.write("<td>")
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <ul class="tab">
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'InfoPG')"
+                            id="defaultOpen">Your Information</a></li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'BasicPG')">Misc.
+                            Content</a></li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'ScorerPG')">Scorer</a>
+                    </li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'RubricsPG')">Rubrics</a>
+                    </li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'ExplorePG')">Explore</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-                document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\""+dict[keys[i]]+"\"></textarea>")
-                document.write("</td>")
-                document.write("</tr>")
-            }
-        </script>
-    </table>
 
-    <h3>FLL Explore</h3>
-    <table border=1 width="100%">
-        <tr style="background-color: yellow;">
-            <td>English</td>
-            <td width="60%">Translation</td>
-        </tr>
-        <script>
-            explore = getMainDict("explore")
-            dict = explore
-            var keys = Object.keys(dict);
-            for (i = 0; i < keys.length; i++) {
-                document.write("<tr>")
-                document.write("<td>")
-                document.write(keys[i])
-                document.write("</td>")
-                document.write("<td>")
+    <div id="InfoPG" class="tabcontent">
+        <h3>Your Information</h3>
+        <table border=1 width="100%">
+            <tr style="background-color: yellow;">
+                <td>Content</td>
+                <td width="60%">Answer</td>
+            </tr>
+            <script>
+                info = getMainDict("info")
+                dict = info
+                var keys = Object.keys(dict);
+                for (i = 0; i < keys.length; i++) {
+                    document.write("<tr>")
+                    document.write("<td>")
+                    document.write(keys[i])
+                    document.write("</td>")
+                    document.write("<td>")
 
-                document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\""+dict[keys[i]]+"\"></textarea>")
-                document.write("</td>")
-                document.write("</tr>")
-            }
-        </script>
-    </table>
+                    document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' placeholder=\"" + dict[keys[i]] + "\"></textarea>")
+                    document.write("</td>")
+                    document.write("</tr>")
+                }
+            </script>
+        </table>
+    </div>
+    <div id="BasicPG" class="tabcontent">
+
+        <h3>Miscellaneous Content</h3>
+        <table border=1 width="100%">
+            <tr style="background-color: yellow;">
+                <td>English</td>
+                <td width="60%">Translation</td>
+            </tr>
+            <script>
+                basic = getMainDict("basic")
+                dict = basic
+                var keys = Object.keys(dict);
+                for (i = 0; i < keys.length; i++) {
+                    document.write("<tr>")
+                    document.write("<td>")
+                    document.write(keys[i])
+                    document.write("</td>")
+                    document.write("<td>")
+
+                    document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\"" + dict[keys[i]] + "\"></textarea>")
+                    document.write("</td>")
+                    document.write("</tr>")
+                }
+            </script>
+        </table>
+    </div>  
+
+    <div id="ScorerPG" class="tabcontent">
+        <h3>Scorer</h3>
+        <table border=1 width="100%">
+            <tr style="background-color: yellow;">
+                <td>English</td>
+                <td width="60%">Translation</td>
+            </tr>
+            <script>
+                scorer = getMainDict("scorer")
+                dict = scorer
+                var keys = Object.keys(dict);
+                for (i = 0; i < keys.length; i++) {
+                    document.write("<tr>")
+                    document.write("<td>")
+                    document.write(keys[i])
+                    document.write("</td>")
+                    document.write("<td>")
+
+                    document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\"" + dict[keys[i]] + "\"></textarea>")
+                    document.write("</td>")
+                    document.write("</tr>")
+                }
+            </script>
+        </table>
+    </div>
+
+
+    <div id="RubricsPG" class="tabcontent">
+        <h3>Rubrics</h3>
+        <table border=1 width="100%">
+            <tr style="background-color: yellow;">
+                <td>English</td>
+                <td width="60%">Translation</td>
+            </tr>
+            <script>
+                rubrics = getMainDict("rubrics")
+                dict = rubrics
+                var keys = Object.keys(dict);
+                for (i = 0; i < keys.length; i++) {
+                    document.write("<tr>")
+                    document.write("<td>")
+                    document.write(keys[i])
+                    document.write("</td>")
+                    document.write("<td>")
+
+                    document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\"" + dict[keys[i]] + "\"></textarea>")
+                    document.write("</td>")
+                    document.write("</tr>")
+                }
+            </script>
+        </table>
+    </div>
+    <div id="ExplorePG" class="tabcontent">
+        <h3>FLL Explore</h3>
+        <table border=1 width="100%">
+            <tr style="background-color: yellow;">
+                <td>English</td>
+                <td width="60%">Translation</td>
+            </tr>
+            <script>
+                explore = getMainDict("explore")
+                dict = explore
+                var keys = Object.keys(dict);
+                for (i = 0; i < keys.length; i++) {
+                    document.write("<tr>")
+                    document.write("<td>")
+                    document.write(keys[i])
+                    document.write("</td>")
+                    document.write("<td>")
+
+                    document.write("<textarea oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\"" + dict[keys[i]] + "\"></textarea>")
+                    document.write("</td>")
+                    document.write("</tr>")
+                }
+            </script>
+        </table>
+    </div>
     <script>
         fulldict = {}
         Object.keys(info).forEach(key => fulldict[key] = info[key]);
@@ -206,20 +297,24 @@
             }
             // alert("Loaded")
         }
-        try{browserload()}
-        catch{}
+        try { browserload() }
+        catch { }
     </script>
     <br><br><br>
-    <div style="border:1px solid black; ">
+    <div style="border:1px solid black; border-radius: 10px;">
         <div style="margin:10px">
             <h3><a id="anchor-name">Save Translations</a></h3>
             <p>You can save and reload your translations. Once completed, please email the save file to <a
                     href="mailto:team@ev3lessons.com">team@ev3lessons.com</a>.</p>
-            <button class="btn btn-primary" onclick="save();">Save</button>
+            <button class="btn btn-primary" onclick="save();">Save/Download All</button>
             <br><br>
             <b>Load save:</b> <input type="file" class="form-control" id="fileInput" accept=".json">
         </div>
     </div>
+    <br><br>
+
+    <a href="/">Return to FLL Tools</a>
+            <br><br>
     <script>
         var fileInputT = document.getElementById('fileInput');
 
@@ -239,6 +334,35 @@
             reader.readAsText(file);
 
         });
+
+
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+
+        function openCity(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                //        tabcontent[i].style.display = "block"; //Uncomment this line to see all tabs at once
+                //        tabcontent[i].style.display = "inline-block"; //Uncomment this line to see all tabs at once
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            if (evt.currentTarget.className)
+                // Show the current tab, and add an "active" class to the link that opened the tab
+                document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
     </script>
 </body>
 
