@@ -6,14 +6,14 @@
 
 // Universal
 
-versionNum = "1.0"
-versionDay = 14
-versionMonth = 07
+versionNum = "1.5"
+versionDay = 19
+versionMonth = 12
 versionYear = 2021
 versionText = ""
 
 //langs=['en:United States:English','pt:Brazil:Portugues','de:Germany:Deutsche','es:Spain:Español','sk:Slovakia:Slovenský','nl:Netherlands:Nederlands','el:Greece:ελληνικά','hu:Hungary:Magyar','he:Israel:עִבְרִית‎','fr:France:français']
-langs = ['en:English:English','fr:France:Français','he:Israel:עִבְרִית‎','nl:Netherlands:Nederlands','pt:Brazil:Portugues']
+langs = ['en:United States:English:English','fr:France:Français:French','he:Israel:עִבְרִית‎:Hebrew','nl:Netherlands:Nederlands:Dutch','pt:Brazil:Portugues:Portuguese']
 // , 'es:Spain:Español'
 // ,'el:Greece:Ελληνικά','pt:Brazil:Portugues','nl:Netherlands:Nederlands','th:Thailand:ไทย','ro:Romania:Română','he:Israel:עִבְרִית‎',"sl:Slovenia:slovenščino"
 //  langs=['en:United States:English','es:Spain:Español','pt:Brazil:Portugues','de:Germany:Deutsche','el:Greece:ελληνικά','tr:Turkey:Türk','ro:Romania:Română','nl:Netherlands:Nederlands','hu:Hungary:Magyar','it:Italy:Italiano']
