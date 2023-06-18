@@ -213,9 +213,7 @@ export class DrawplanPage implements OnInit {
       <ion-button text-wrap class="ui-mini no-mobile" data-inline="true" onclick="// alert('choose .DRCI file') ;
                             document.getElementById('fileInputDP').click() "><text id="importSavedDrawingsText">Import Shared Drawings</text></ion-button>
     <br>
-      <ion-button text-wrap data-inline="true" class="" onclick="exporter();"><text id="exportPNGText">Export
-          Drawing
-          as PNG</text></ion-button>
+      <ion-button text-wrap data-inline="true" class="" onclick="exporter();"><text id="exportPNGText">Export Drawing as PNG</text></ion-button>
       <input onchange="" style=" display:none; position: fixed;    bottom: -10000;   left: -100000; " type="file"
         id="fileInputDP" accept=".DRCI"><br>
       <!--Drawplan Scoring System Version 4.2.0 scorer<br>-->
