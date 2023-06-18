@@ -301,7 +301,7 @@ transform: translate3d(0px, -24px, 0px) scale(1);
 
     for (i = 0; i < langs.length; i++) {
       langbuffer += '\
-              <a onclick="createCookie(\'' + langs[i].split(":")[0] + '\');language=\'' + window[langs[i].split(":")[0].split("-")[0]] + '\';switchLanguage();" style="cursor: pointer;"><img src="assets/images/langs/' + langs[i].split(":")[0] + '.svg" alt="' + langs[i].split(":")[2] + '" title="' + langs[i].split(":")[2] + '" width="30" height="30" border="0" style="object-fit:cover;border-radius:30%;"></a>\
+              <a onclick="createCookie(\'' + langs[i].split(":")[0] + '\');language=\'' + window[langs[i].split(":")[0].split("-")[0]] + '\';switchLanguage();" style="cursor: pointer;"><img src="assets/images/langs/' + langs[i].split(":")[3] + '.svg" alt="' + langs[i].split(":")[2] + '" title="' + langs[i].split(":")[2] + '" width="30" height="30" border="0" style="object-fit:cover;border-radius:30%;"></a>\
           '
     }
 
