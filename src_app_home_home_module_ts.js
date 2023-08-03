@@ -101,22 +101,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let HomePage = class HomePage {
-    constructor() { }
-    ngOnInit() {
-        // $('head').append('<script async src="assets/js/search.js"></script>');
-        // document.head.innerHTML+=("<script>alert('hi')</script>")
-        eval('initpage();switchLanguage();');
-    }
-};
-HomePage.ctorParameters = () => [];
-HomePage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
-        selector: 'app-home',
-        template: _raw_loader_home_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
-        styles: [_home_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
-    })
-], HomePage);
+  constructor() {}
 
+  ngOnInit() {
+    // $('head').append('<script async src="assets/js/search.js"></script>');
+    // document.head.innerHTML+=("<script>alert('hi')</script>")
+    eval('initpage();switchLanguage();');
+  }
+
+};
+
+HomePage.ctorParameters = () => [];
+
+HomePage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+  selector: 'app-home',
+  template: _raw_loader_home_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
+  styles: [_home_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
+})], HomePage);
 
 
 /***/ }),

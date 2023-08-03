@@ -19,8 +19,8 @@ store = []
 score = ""
 datetime = ""
 
-if (window.localStorage.DRCCS1scorer == undefined) {
-  window.localStorage.DRCCS1scorer = ''
+if (window.localStorage.DRMPS1scorer == undefined) {
+  window.localStorage.DRMPS1scorer = ''
 }
 
 // Function to get status check of all missions and store in var store (also returned)
@@ -32,7 +32,7 @@ function getvar() {
     count1 = 0
     while (count1 < all_mission[count][1].length) {
       store = store.concat([["" + all_mission[count][1][count1] + "|" + window[all_mission[count][1][count1] + 'save'] + ""]])
-      console.log(["" + all_mission[count][1][count1] + "|" + window[all_mission[count][1][count1] + 'save'] + ""] , platooningTrucks1, all_mission[count][1][count1] + 'save')
+      console.log(["" + all_mission[count][1][count1] + "|" + window[all_mission[count][1][count1] + 'save'] + ""] , all_mission[count][1][count1] + 'save')
       count1 = count1 + 1
     }
     count = count + 1
@@ -89,7 +89,7 @@ function loadsave(save) {
 
 // Load a localStorage getvar() var store save by id
 function loader(save) {
-  data = window.localStorage.DRCCSscorer.split('/')[save];
+  data = window.localStorage.DRMPSscorer.split('/')[save];
   loadsave(String(data));
   loadsave(String(data));
   ionAlert(loadedText);
@@ -102,11 +102,11 @@ function drawBasic() {
 
   nn = 1;
   array = [];
-  array[0] = parseInt(window.localStorage.DRCCS1scorer.split(' Points')[0].split(',')[0]);
+  array[0] = parseInt(window.localStorage.DRMPS1scorer.split(' Points')[0].split(',')[0]);
   vvv = 1;
-  lt = window.localStorage.DRCCS1scorer.split(',').length - 0;
+  lt = window.localStorage.DRMPS1scorer.split(',').length - 0;
   while (vvv < lt) {
-    array[nn] = parseInt(window.localStorage.DRCCS1scorer.split(' Points')[vvv].split(',')[1]);
+    array[nn] = parseInt(window.localStorage.DRMPS1scorer.split(' Points')[vvv].split(',')[1]);
     vvv = vvv + 1;
     nn = nn + 1;
   }
@@ -161,12 +161,12 @@ function drawBasic() {
 // Display saveDateTimeScore() data under graph
 function displaysaves() {
   n = 0;
-  a = window.localStorage.DRCCS1scorer.split(',').length;
+  a = window.localStorage.DRMPS1scorer.split(',').length;
   document.getElementById('saves').innerHTML = "";
-  if (window.localStorage.DRCCS1scorer != undefined && window.localStorage.DRCCS1scorer != "") {
+  if (window.localStorage.DRMPS1scorer != undefined && window.localStorage.DRMPS1scorer != "") {
     while (n < a) {
       //alert(n)
-      document.getElementById('saves').innerHTML = document.getElementById('saves').innerHTML + ' ' + saveText + ' ' + String(n + 1) + ': ' + window.localStorage.DRCCS1scorer.split(',')[n].split('Points')[0] + pointsText + window.localStorage.DRCCS1scorer.split(',')[n].split('Points')[1] + '<br>';
+      document.getElementById('saves').innerHTML = document.getElementById('saves').innerHTML + ' ' + saveText + ' ' + String(n + 1) + ': ' + window.localStorage.DRMPS1scorer.split(',')[n].split('Points')[0] + pointsText + window.localStorage.DRMPS1scorer.split(',')[n].split('Points')[1] + '<br>';
       n = n + 1;
     }
   }
@@ -222,13 +222,13 @@ if (hours > 12) {
 function saver() {
   // Save all missions
   store = getvar();
-  window.localStorage.DRCCSscorer = window.localStorage.DRCCSscorer + '/' + store
+  window.localStorage.DRMPSscorer = window.localStorage.DRMPSscorer + '/' + store
   // Save time stamp and score
   saveDateTimeScore()
-  if (window.localStorage.DRCCS1scorer != undefined && window.localStorage.DRCCS1scorer != '') {
-    window.localStorage.DRCCS1scorer = String(window.localStorage.DRCCS1scorer) + ',' + String(score) + ' Points - ' + datetime;
+  if (window.localStorage.DRMPS1scorer != undefined && window.localStorage.DRMPS1scorer != '') {
+    window.localStorage.DRMPS1scorer = String(window.localStorage.DRMPS1scorer) + ',' + String(score) + ' Points - ' + datetime;
   } else {
-    window.localStorage.DRCCS1scorer = score + ' Points - ' + datetime;
+    window.localStorage.DRMPS1scorer = score + ' Points - ' + datetime;
   }
 
   ionAlert(savedText);

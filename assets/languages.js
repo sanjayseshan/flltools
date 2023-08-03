@@ -6,14 +6,15 @@
 
 // Universal
 
-versionNum = "1.5"
-versionDay = 19
-versionMonth = 12
-versionYear = 2021
+versionNum = "6.0.1"
+versionDay = 1
+versionMonth = 9
+versionYear = 2023
 versionText = ""
 
 //langs=['en:United States:English','pt:Brazil:Portugues','de:Germany:Deutsche','es:Spain:Español','sk:Slovakia:Slovenský','nl:Netherlands:Nederlands','el:Greece:ελληνικά','hu:Hungary:Magyar','he:Israel:עִבְרִית‎','fr:France:français']
-langs = ['en:United States:English:English','fr:France:Français:French','he:Israel:עִבְרִית‎:Hebrew','nl:Netherlands:Nederlands:Dutch','pt:Brazil:Portugues:Portuguese']
+langs = ['en:United States:English:English']
+// ,'fr:France:Français:French','he:Israel:עִבְרִית‎:Hebrew','nl:Netherlands:Nederlands:Dutch','pt:Brazil:Portugues:Portuguese']
 // , 'es:Spain:Español'
 // ,'el:Greece:Ελληνικά','pt:Brazil:Portugues','nl:Netherlands:Nederlands','th:Thailand:ไทย','ro:Romania:Română','he:Israel:עִבְרִית‎',"sl:Slovenia:slovenščino"
 //  langs=['en:United States:English','es:Spain:Español','pt:Brazil:Portugues','de:Germany:Deutsche','el:Greece:ελληνικά','tr:Turkey:Türk','ro:Romania:Română','nl:Netherlands:Nederlands','hu:Hungary:Magyar','it:Italy:Italiano']
@@ -95,7 +96,7 @@ function languageInit() {
 	stopText = getTranslation(dictionary, "Stop");
 	pointsText = getTranslation(dictionary, "Points");
 
-	sketchTitle = getTranslation(dictionary, "FLL CARGO CONNECT Strategy Planner");
+	sketchTitle = getTranslation(dictionary, "FLL MASTERPIECE Strategy Planner");
 	drawingsText = getTranslation(dictionary, "Saved Drawings");
 	saveDrawingText = getTranslation(dictionary, "Save Drawing");
 	deleteSavedDrawingsText = getTranslation(dictionary, "Delete All Saved Drawings");
@@ -120,7 +121,7 @@ function languageInit() {
 	copyrightText = "Copyright (c) " + versionYear + " Seshan Brothers";
 	tournamentText = getTranslation(dictionary,"FLL Tournament Scoring System");
 
-	title = getTranslation(dictionary, "FLL CARGO CONNECT Scorer");
+	title = getTranslation(dictionary, "FLL MASTERPIECE Scorer");
 
 	mainTitle = getTranslation(dictionary, "FLL Tools");
 
