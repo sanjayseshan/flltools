@@ -292,14 +292,16 @@ function createdropdown(mission, items, points, description) {
 function starttable(mission, title, image, children, extrarows) {
     x = 0
 
-    if (mission == "A00") {
+    if (mission[0] == "A") {
         missionDisp = ""
         color = "#e3000b"
+        // color = "#ff5b71"
 
     } else {
         window["mNum" + title] = 0
         missionDisp = "<text id='mNum" + title + "'>M</text>" + mission.split("M")[1] + " <text> </text> <text> -</text>  "
-        color = "#0062ae"
+        // color = "#0062ae"
+        color = "#428cff;"
     }
     //width="'+(window.innerWidth/columnCount-5)+'"
     element = 1 + 2 * children.length + extrarows

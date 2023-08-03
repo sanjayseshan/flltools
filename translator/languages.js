@@ -6,16 +6,15 @@
 
 // Universal
 
-versionNum = "6.0.1"
-versionDay = 1
-versionMonth = 9
-versionYear = 2023
+versionNum = "1.0"
+versionDay = 14
+versionMonth = 07
+versionYear = 2021
 versionText = ""
 
 //langs=['en:United States:English','pt:Brazil:Portugues','de:Germany:Deutsche','es:Spain:Español','sk:Slovakia:Slovenský','nl:Netherlands:Nederlands','el:Greece:ελληνικά','hu:Hungary:Magyar','he:Israel:עִבְרִית‎','fr:France:français']
-langs = ['en:United States:English:English']
-// ,'fr:France:Français:French','he:Israel:עִבְרִית‎:Hebrew','nl:Netherlands:Nederlands:Dutch','pt:Brazil:Portugues:Portuguese']
-// , 'es:Spain:Español'
+langs = ['en:United States:English', 'es:Spain:Español']
+// 
 // ,'el:Greece:Ελληνικά','pt:Brazil:Portugues','nl:Netherlands:Nederlands','th:Thailand:ไทย','ro:Romania:Română','he:Israel:עִבְרִית‎',"sl:Slovenia:slovenščino"
 //  langs=['en:United States:English','es:Spain:Español','pt:Brazil:Portugues','de:Germany:Deutsche','el:Greece:ελληνικά','tr:Turkey:Türk','ro:Romania:Română','nl:Netherlands:Nederlands','hu:Hungary:Magyar','it:Italy:Italiano']
 
@@ -39,7 +38,18 @@ langs = ['en:United States:English:English']
 
 function getDict(language) {
 	try {
-		data = JSON.parse(textFile("assets/translations/"+language+".json"));
+		data = JSON.parse(textFile(""+language+".json"));
+		console.log(data);
+		return data;
+	} catch (error) {
+		return { "Translator Credit": ""}
+	}
+	
+}
+
+function getMainDict(type) {
+	try {
+		data = JSON.parse(textFile(type+".json"));
 		console.log(data);
 		return data;
 	} catch (error) {
@@ -96,7 +106,7 @@ function languageInit() {
 	stopText = getTranslation(dictionary, "Stop");
 	pointsText = getTranslation(dictionary, "Points");
 
-	sketchTitle = getTranslation(dictionary, "FLL MASTERPIECE Strategy Planner");
+	sketchTitle = getTranslation(dictionary, "FLL CARGO CONNECT Strategy Planner");
 	drawingsText = getTranslation(dictionary, "Saved Drawings");
 	saveDrawingText = getTranslation(dictionary, "Save Drawing");
 	deleteSavedDrawingsText = getTranslation(dictionary, "Delete All Saved Drawings");
@@ -121,7 +131,7 @@ function languageInit() {
 	copyrightText = "Copyright (c) " + versionYear + " Seshan Brothers";
 	tournamentText = getTranslation(dictionary,"FLL Tournament Scoring System");
 
-	title = getTranslation(dictionary, "FLL MASTERPIECE Scorer");
+	title = getTranslation(dictionary, "FLL CARGO CONNECT Scorer");
 
 	mainTitle = getTranslation(dictionary, "FLL Tools");
 

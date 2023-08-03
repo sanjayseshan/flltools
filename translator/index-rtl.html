@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        language = "en";
+        function fixedEncodeURIComponent(str) {
+            return encodeURIComponent(str).replace(/[!'()*]/g, function (c) {
+                return '%' + c.charCodeAt(0).toString(16);
+            });
+        }
+    </script>
+    <script src="download.js"></script>
+    <script src="languages.js"></script>
+
+    <title>FLL Tools Translator (RTL) 2023-24</title>
+</head>
+
+<body style="margin: 10px;">
+    <h1>FLL Tools Translator (RTL)</h1>
+    <p>
+        Thank you for your help in translating tools for the FIRST LEGO League community. Most of the text can be copy-and-pasted from your region's translated FIRST LEGO League challenge documents. The only difference is that we try to reword the challenge text into a question form in our scorer as we find that questions are easier for students and referees to understand.
+        <br><br>
+        Please translate <b>Core Content</b> and <b>Scorer</b> tabs. If you have time, we would love to have the additional material in the other tabs translated as well.  If you do not have time, you are also welcome to email us a copy of your region’s <b>Rubrics</b> and <b>FLL Explore Reviewing Sheet</b> and we will cut-and-paste for this additional material. The final tab has additional words used in the App.
+        
+
+    </p>
+    <p>
+        Finally, [VERY IMPORTANT] make sure to click the <a href="#anchor-name">Save Button</a> at the bottom of this page. You can reload saved files if you do not complete all the translations in one setting. Please email your final save file to <a
+        href="mailto:team@ev3lessons.com">team@ev3lessons.com</a>.
+        
+ 
+            
+    <style>
+        ul.tab {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Float the list items side by side */
+        ul.tab li {
+            float: left;
+        }
+
+        /* Style the links inside the list items */
+        ul.tab li a {
+            display: inline-block;
+            /* color: black; */
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of links on hover */
+        ul.tab li a:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        ul.tab li a:focus,
+        .active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+            -webkit-animation: fadeEffect 0.25s;
+            animation: fadeEffect 0.25s;
+            /* Fading effect takes 1 second */
+        }
+
+        @-webkit-keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <ul class="tab">
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'InfoPG')"
+                            id="defaultOpen">Core Content</a></li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'ScorerPG')">Scorer</a>
+                    </li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'RubricsPG')">Rubrics</a>
+                    </li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'ExplorePG')">FLL Explore</a>
+                    </li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'BasicPG')">Strategy Planner</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="InfoPG" class="tabcontent">
+        <h3>Core Content</h3>
+        <table border=1 width="100%">
+            <tr style="background-color: yellow;">
+                <td>English</td>
+                <td width="60%">Translation</td>
+            </tr>
+            <script>
+                info = getMainDict("info")
+                dict = info
+                var keys = Object.keys(dict);
+                for (i = 0; i < keys.length; i++) {
+                    document.write("<tr>")
+                    document.write("<td>")
+                    document.write(keys[i])
+                    document.write("</td>")
+                    document.write("<td>")
+
+                    document.write("<textarea dir='rtl' oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' placeholder=\"" + dict[keys[i]] + "\"></textarea>")
+                    document.write("</td>")
+                    document.write("</tr>")
+                }
+            </script>
+        </table>
+    </div>
+    <div id="BasicPG" class="tabcontent">
+
+        <h3>Strategy Planner & Miscellaneous Content</h3>
+        <table border=1 width="100%">
+            <tr style="background-color: yellow;">
+                <td>English</td>
+                <td width="60%">Translation</td>
+            </tr>
+            <script>
+                basic = getMainDict("basic")
+                dict = basic
+                var keys = Object.keys(dict);
+                for (i = 0; i < keys.length; i++) {
+                    document.write("<tr>")
+                    document.write("<td>")
+                    document.write(keys[i])
+                    document.write("</td>")
+                    document.write("<td>")
+
+                    document.write("<textarea dir='rtl' oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\"" + dict[keys[i]] + "\"></textarea>")
+                    document.write("</td>")
+                    document.write("</tr>")
+                }
+            </script>
+        </table>
+    </div>  
+
+    <div id="ScorerPG" class="tabcontent">
+        <h3>Scorer</h3>
+        <table border=1 width="100%">
+            <tr style="background-color: yellow;">
+                <td>English</td>
+                <td width="60%">Translation</td>
+            </tr>
+            <script>
+                scorer = getMainDict("scorer")
+                dict = scorer
+                var keys = Object.keys(dict);
+                for (i = 0; i < keys.length; i++) {
+                    document.write("<tr>")
+                    document.write("<td>")
+                    document.write(keys[i])
+                    document.write("</td>")
+                    document.write("<td>")
+
+                    document.write("<textarea dir='rtl' oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\"" + dict[keys[i]] + "\"></textarea>")
+                    document.write("</td>")
+                    document.write("</tr>")
+                }
+            </script>
+        </table>
+    </div>
+
+
+    <div id="RubricsPG" class="tabcontent">
+        <h3>Rubrics</h3>
+        <table border=1 width="100%">
+            <tr style="background-color: yellow;">
+                <td>English</td>
+                <td width="60%">Translation</td>
+            </tr>
+            <script>
+                rubrics = getMainDict("rubrics")
+                dict = rubrics
+                var keys = Object.keys(dict);
+                for (i = 0; i < keys.length; i++) {
+                    document.write("<tr>")
+                    document.write("<td>")
+                    document.write(keys[i])
+                    document.write("</td>")
+                    document.write("<td>")
+
+                    document.write("<textarea dir='rtl' oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\"" + dict[keys[i]] + "\"></textarea>")
+                    document.write("</td>")
+                    document.write("</tr>")
+                }
+            </script>
+        </table>
+    </div>
+    <div id="ExplorePG" class="tabcontent">
+        <h3>FLL Explore Review Sheet</h3>
+        <table border=1 width="100%">
+            <tr style="background-color: yellow;">
+                <td>English</td>
+                <td width="60%">Translation</td>
+            </tr>
+            <script>
+                explore = getMainDict("explore")
+                dict = explore
+                var keys = Object.keys(dict);
+                for (i = 0; i < keys.length; i++) {
+                    document.write("<tr>")
+                    document.write("<td>")
+                    document.write(keys[i])
+                    document.write("</td>")
+                    document.write("<td>")
+
+                    document.write("<textarea dir='rtl' oninput='browsersave()' id='" + fixedEncodeURIComponent(keys[i]) + "' class='form-control' type='text' es=\"" + dict[keys[i]] + "\"></textarea>")
+                    document.write("</td>")
+                    document.write("</tr>")
+                }
+            </script>
+        </table>
+    </div>
+    <script>
+        fulldict = {}
+        Object.keys(info).forEach(key => fulldict[key] = info[key]);
+        Object.keys(basic).forEach(key => fulldict[key] = basic[key]);
+        Object.keys(scorer).forEach(key => fulldict[key] = scorer[key]);
+        Object.keys(rubrics).forEach(key => fulldict[key] = rubrics[key]);
+        Object.keys(explore).forEach(key => fulldict[key] = explore[key]);
+        var fullkeys = Object.keys(fulldict);
+
+        function save() {
+            newDict = {}
+            for (i = 0; i < fullkeys.length; i++) {
+                console.log(fullkeys[i], fixedEncodeURIComponent(fullkeys[i]))
+                if (document.getElementById(fixedEncodeURIComponent(fullkeys[i])).value.trim() != "") {
+                    newDict[fullkeys[i]] = document.getElementById(fixedEncodeURIComponent(fullkeys[i])).value.trim()
+                }
+            }
+            download(JSON.stringify(newDict), document.getElementById(fixedEncodeURIComponent("Language Name")).value + "2023rtl.json", "text/plain");
+            return newDict
+        }
+
+        function browsersave() {
+            newDict = {}
+            for (i = 0; i < fullkeys.length; i++) {
+                // console.log(fullkeys[i], fixedEncodeURIComponent(fullkeys[i]))
+                if (document.getElementById(fixedEncodeURIComponent(fullkeys[i])).value.trim() != "") {
+                    newDict[fullkeys[i]] = document.getElementById(fixedEncodeURIComponent(fullkeys[i])).value.trim()
+                }
+            }
+            svtxt = JSON.stringify(newDict)
+            window.localStorage.translationSave = svtxt;
+            console.log("Auto saving")
+            return newDict
+        }
+
+
+        function load(data) {
+            mysave = JSON.parse(data)
+            savekeys = Object.keys(mysave);
+            for (i = 0; i < savekeys.length; i++) {
+                console.log(savekeys[i], fixedEncodeURIComponent(savekeys[i]))
+                try {
+                    document.getElementById(fixedEncodeURIComponent(savekeys[i])).value = mysave[savekeys[i]]
+                } catch { }
+            }
+            alert("Loaded")
+        }
+
+        function browserload() {
+            mysave = JSON.parse(window.localStorage.translationSave)
+            savekeys = Object.keys(mysave);
+            for (i = 0; i < savekeys.length; i++) {
+                console.log(savekeys[i], fixedEncodeURIComponent(savekeys[i]))
+                try {
+                    document.getElementById(fixedEncodeURIComponent(savekeys[i])).value = mysave[savekeys[i]]
+                } catch { }
+            }
+            // alert("Loaded")
+        }
+        try { browserload() }
+        catch { }
+    </script>
+    <br><br><br>
+    <div style="border:1px solid black; border-radius: 10px;">
+        <div style="margin:10px">
+            <h3><a id="anchor-name">Save Translations</a></h3>
+            <p>You can save and reload your translations. Once completed, please email the save file to <a
+                    href="mailto:team@ev3lessons.com">team@ev3lessons.com</a>.</p>
+            <button class="btn btn-primary" onclick="save();">Save/Download All</button>
+            <br><br>
+            <b>Load save:</b> <input type="file" class="form-control" id="fileInput" accept=".json">
+        </div>
+    </div>
+    <br><br>
+
+    <a href="/">Return to FLL Tools</a>
+            <br><br>
+    <script>
+        var fileInputT = document.getElementById('fileInput');
+
+        fileInputT.addEventListener('change', function (e) {
+            var file = fileInputT.files[0];
+            var textType = /text.*/;
+
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                data = reader.result;
+                //alert(data)
+
+                load(data)
+            }
+
+            reader.readAsText(file);
+
+        });
+
+
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+
+        function openCity(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                //        tabcontent[i].style.display = "block"; //Uncomment this line to see all tabs at once
+                //        tabcontent[i].style.display = "inline-block"; //Uncomment this line to see all tabs at once
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            if (evt.currentTarget.className)
+                // Show the current tab, and add an "active" class to the link that opened the tab
+                document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+
+</html>
