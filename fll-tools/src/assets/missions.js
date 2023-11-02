@@ -163,8 +163,8 @@ function load2021() {
     endtable()
 
     starttable('M06', "Accident Avoidance", 'M06.jpg', ['accidentAvoidance1', 'accidentAvoidance2'], 1)
-    createbutton("accidentAvoidance1", 30, "Is your robot parked over the blue accident-avoidance line at the end of the match and the yellow panel is not knocked down")
-    createbutton("accidentAvoidance2", 20, "Is your robot parked over the blue accident-avoidance line at the end of the match and the yellow panel is knocked down?")
+    createbutton("accidentAvoidance1", 20, "Is your robot parked over the blue accident-avoidance line at the end of the match and the yellow panel is not knocked down")
+    createbutton("accidentAvoidance2", 30, "Is your robot parked over the blue accident-avoidance line at the end of the match and the yellow panel is knocked down?")
     createbuttonconflict("accidentAvoidance1", "accidentAvoidance2", 0)
     createcomment("If the black frame is knocked down at the end of the match, this mission does not score.")
     endtable()
