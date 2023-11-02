@@ -59,7 +59,7 @@ function specialCasesCheck(mission) {
     //         document.getElementById(mission).value = totalContainers - (sum - document.getElementById(mission).value)
     //         sum = totalContainers
     //         recalc(window[mission + 'inc'] * parseInt(document.getElementById(mission).value), mission, parseInt(document.getElementById(mission).value))
-    //     } 
+    //     }
     //     if (sum == 8) {
     //         $('#nosortingCenter1').checkboxradio('disable');
     //         $('#yessortingCenter1').checkboxradio('disable');
@@ -72,9 +72,9 @@ function specialCasesCheck(mission) {
     // }
     // if (mission == "cargoConnect2") {
     //     if (parseInt(document.getElementById("cargoConnect2").value) == 1) {
-    //         createbuttonconflict("cargoConnect3", "cargoConnect4", 0)        
+    //         createbuttonconflict("cargoConnect3", "cargoConnect4", 0)
     //     } else if (parseInt(document.getElementById("cargoConnect2").value) > 1) {
-    //         deletebuttonconflict("cargoConnect3", "cargoConnect4", 0)        
+    //         deletebuttonconflict("cargoConnect3", "cargoConnect4", 0)
     //     }
     // }
 
@@ -166,7 +166,7 @@ function load2021() {
     endtable()
 
     starttable('M06', "MUSIC CONCERT LIGHTS AND SOUNDS", 'M06.png', ['m06a', 'm06b'], 0)
-    createbutton("m06a", 10, "If the lights' orange lever is rotated completely downwards:")
+    createbutton("m06a", 10,  "If the lights' orange lever is rotated completely downwards:")
     createbutton("m06b", 10, "If the speakers' orange lever is rotated completely to the left:")
     endtable()
 
@@ -198,7 +198,7 @@ function load2021() {
     createdropdown("m11a", ["","Yellow", "Green","Blue"], [0, 10, 20, 30], "If the light show’s white pointer is within zone")
     createcomment("If the white pointer rests between zones, you earn points for the higher scoring zone of the two.")
     endtable()
-    
+
     starttable('M12', "VIRTUAL REALITY ARTIST", 'M12.png', ['m12a', 'm12b'], 0)
     createbutton("m12a", 10, "If the chicken is intact and has moved from its starting position:")
     createbutton("m12b", 20, "BONUS: And is over or completely past the lavender dot:")
