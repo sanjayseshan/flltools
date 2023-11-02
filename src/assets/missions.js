@@ -166,8 +166,8 @@ function load2021() {
     endtable()
 
     starttable('M06', "MUSIC CONCERT LIGHTS AND SOUNDS", 'M06.png', ['m06a', 'm06b'], 0)
-    createbutton("m06a", 20, "If the lights' orange lever is rotated completely downwards:")
-    createbutton("m06b", 30, "If the speakers' orange lever is rotated completely to the left:")
+    createbutton("m06a", 10, "If the lights' orange lever is rotated completely downwards:")
+    createbutton("m06b", 10, "If the speakers' orange lever is rotated completely to the left:")
     endtable()
 
     starttable('M07', "HOLOGRAM PERFORMER", 'M07.png', ['m07a'], 0)
