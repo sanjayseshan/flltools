@@ -162,7 +162,7 @@ function load2021() {
     endtable()
 
     starttable('M05', "AUGMENTED REALITY STATUE", 'M05.png', ['m05a'], 0)
-    createbutton("m05a", 20, "If the augmented reality statue’s orange lever is rotated completely to the right")
+    createbutton("m05a", 30, "If the augmented reality statue’s orange lever is rotated completely to the right")
     endtable()
 
     starttable('M06', "MUSIC CONCERT LIGHTS AND SOUNDS", 'M06.png', ['m06a', 'm06b'], 0)
