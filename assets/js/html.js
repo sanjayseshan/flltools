@@ -360,8 +360,8 @@ function endRubric() {
     addToBuffer(' </ion-grid>')
 }
 
-function startRow() {
-    addToBuffer("<ion-radio-group ><ion-row style='border:1px solid grey;'>")
+function startRow(bgcolor="none") {
+    addToBuffer("<ion-radio-group ><ion-row style='border:1px solid grey;background-color:"+bgcolor+"'>")
 }
 
 function addSectionTitle(title) {

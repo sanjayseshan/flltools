@@ -235,8 +235,8 @@ transform: translate3d(0px, -24px, 0px) scale(1);
 
   <input type="hidden" id="loadedBtn">
   <script>
-    if (window.localStorage.DRCCSscorer != undefined) {
-      maximum = window.localStorage.DRCCSscorer.split('/').length - 1;
+    if (window.localStorage.DRSMSscorer != undefined) {
+      maximum = window.localStorage.DRSMSscorer.split('/').length - 1;
       min = 1;
       start = 1;
     } else {
@@ -771,8 +771,8 @@ transform: translate3d(0px, -24px, 0px) scale(1);
 
     // context = ctx;
     // drawBoard()
-    // if (window.localStorage.DRCCGoogleSheet != undefined) {
-    //     document.getElementById('sheetId').value = window.localStorage.DRCCGoogleSheet;
+    // if (window.localStorage.DRSMGoogleSheet != undefined) {
+    //     document.getElementById('sheetId').value = window.localStorage.DRSMGoogleSheet;
     //     } else {
     // 	document.getElementById('sheetId').value = undefinedText;
     //     }
@@ -1068,7 +1068,7 @@ var modalElement;
       person = role + "-" + name
       match = "team-" + teamSV
 
-      filename = match + "_" + time + "_round-" + round + "_score-" + points + "_" + person + ".TDRCC"
+      filename = match + "_" + time + "_round-" + round + "_score-" + points + "_" + person + ".TDRSM"
 
       data = team + ";" + round + ";" + score + ";" + role + ";" + name + ";" + filename
       // filename = "team-"+document.getElementById("team_num").value+"_round-"+document.getElementById("round_num").value+"_score-"+document.getElementById("allpoints").innerHTML+"_"+currentTime+".TDRRP"
