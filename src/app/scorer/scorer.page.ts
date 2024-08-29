@@ -74,9 +74,9 @@ load2021();
           data = reader.result;
           //alert(data)
 
-          window.localStorage.DRCCSscorer = data.split(';')[0];
-          window.localStorage.DRCCS1scorer = data.split(';')[1];
-          maximum = window.localStorage.DRCCSscorer.split('/').length - 1
+          window.localStorage.DRSMSscorer = data.split(';')[0];
+          window.localStorage.DRSMS1scorer = data.split(';')[1];
+          maximum = window.localStorage.DRSMSscorer.split('/').length - 1
         }
 
         reader.readAsText(file);

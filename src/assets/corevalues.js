@@ -16,9 +16,10 @@ function load2020CV() {
 	clearbuffer()
 
 	// Draw the layout
+	addToBuffer("<h1>Judging Session Feedback</h1>")
 
-	addToBuffer("<h1>Core Values</h1>")
-	addToBuffer("<p class='no-print'>Instructions: The Core Values should be the lens through which you watch the team’s presentations. All team members should be demonstrating the Core Values in everything they do. This rubric should be used to record the Core Values observed thoughout the judging session.</p><br><br>If the team is a candidate for one of these awards, please tick the appropriate box:")
+	
+	addToBuffer("<p>If the team is a candidate for one of these awards, please tick the appropriate box. Check with your event organizer which optional awards your event uses.</p>")
 
 	addStrengths(
 		"Breakthrough Award - A team that made significant progress in their confidence and capability and who understand that what they discover is more important than what they win",
@@ -26,7 +27,13 @@ function load2020CV() {
 		"Motivate - A team that embraces the culture of FIRST LEGO League through team building, team spirit, and displayed enthusiam"
 	)
 
+	addToBuffer("<h1>Core Values</h1>")
+	addToBuffer("<p class='no-print'>The FIRST® Core Values are the lens through which judges watch the team's presentations and evaluate their progress.</p>")
+
+
 	startRubric()
+
+	addToBuffer(' <div style="display:none;">')
 
 	startRow()
 	addCVLevels("#FDEAE3","#FCCEBE","#F4AE94","#EF8C6D",
@@ -115,13 +122,15 @@ function load2020CV() {
 	addCVOption("fun","","4")
 	closeRow()
 
+	addToBuffer(' </div>')
 
-	addComments("coreValues","Feedback Comments","Great Job","Think About")
+	addComments("coreValues","Core Values -- How did the team demonstrate teamwork, discovery, inclusion, innovation, impact, and fun in their work?","Great Job","Think About")
 
 	endRubric()	
 
+	addToBuffer("<div style='display:none;'>")
 	addToBuffer("Total Points:<text> </text><b style='color:red;' id='cvpts'></b>")
-
+	addToBuffer("</div>")
 	/*
 	window.onload = function() {
 	check_missions()

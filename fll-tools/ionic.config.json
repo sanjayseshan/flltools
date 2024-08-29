@@ -1,7 +1,0 @@
-{
-  "name": "FLL Tools",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

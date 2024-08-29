@@ -28,15 +28,15 @@ function load2020RP() {
 	closeRow()
 
 	startRow()
-	addOption("identify","Problem not clearly defined","1")
+	addOption("identify","Unclear definition of the problem","1")
 	addOption("identify","Partially clear definition of the problem","2")
 	addOption("identify","Clear definition of the problem","3")
 	addFreeOption("identify","4")
 	closeRow()
 
-	startRow()
-	addOption("identify2","Minimal research","1")
-	addOption("identify2","Partial research from more than one source","2")
+	startRow(bgcolor="pink")
+	addOption("identify2","Minimal evidence of research","1")
+	addOption("identify2","Partial evidence of research from one or more sources","2")
 	addOption("identify2","Clear, detailed research from a variety of sources","3")
 	addFreeOption("identify2","4")
 	closeRow()
@@ -44,20 +44,20 @@ function load2020RP() {
 
 
 	startRow()
-	addSubSection("Design - Team generated innovative ideas independently before selecting and planning which one to develop.","#D2DAF1",["design","design2"])
+	addSubSection("Design - Team worked together while creating a project plan and developing their ideas.","#D2DAF1",["design","design2"])
 	closeRow()
 
 	startRow()
-	addOption("design","Minimal evidence of an inclusive selection process","1")
-	addOption("design","Partial evidence of an inclusive selection process","2")
-	addOption("design","Clear evidence of an inclusive selection process","3")
+	addOption("design","Minimal evidence of an effective project plan","1")
+	addOption("design","Partial evidence of an effective project plan","2")
+	addOption("design","Clear evidence of an effective project plan","3")
 	addFreeOption("design","4")
 	closeRow()
 
-	startRow()
-	addOption("design2","Minimal evidence of an effective plan","1")
-	addOption("design2","Partial evidence of an effective plan","2")
-	addOption("design2","Clear evidence of an effective plan","3")
+	startRow(bgcolor="pink")
+	addOption("design2","Minimal evidence that development process involved all team members","1")
+	addOption("design2","Partial evidence that development process involved all team member","2")
+	addOption("design2","Clear evidence that development process involved all team members","3")
 	addFreeOption("design2","4")
 	closeRow()
 
@@ -67,17 +67,17 @@ function load2020RP() {
 	addSubSection("Create - Team developed an original idea or built on an existing one with a prototype model/drawing to represent their solution.","#D2DAF1",["create","create2"])
 	closeRow()
 
-	startRow()
-	addOption("create","Minimal development of innovative solution","1")
-	addOption("create","Partial development of innovative solution","2")
-	addOption("create","Clear development of innovative solution","3")
+	startRow(bgcolor="pink")
+	addOption("create","Minimal explanation of innovative solution","1")
+	addOption("create","Simple explanation of innovative solution","2")
+	addOption("create","Detailed explanation of innovative solution","3")
 	addFreeOption("create","4")
 	closeRow()
 
 	startRow()
-	addOption("create2","Unclear model/drawing of solution","1")
-	addOption("create2","Simple model/drawing that helps to share the solution","2")
-	addOption("create2","Detailed model/drawing that helps to share the solution","3")
+	addOption("create2","Unclear model/drawing that represents the solution","1")
+	addOption("create2","Simple model/drawing that represents the solution","2")
+	addOption("create2","Detailed model/drawing that represents the the solution","3")
 	addFreeOption("create2","4")
 	closeRow()
 
@@ -90,15 +90,15 @@ function load2020RP() {
 
 	startRow()
 	addOption("iterate","Minimal sharing of their solution","1")
-	addOption("iterate","Shared their solution with user OR professional","2")
-	addOption("iterate","Shared their solution with user AND professional","3")
+	addOption("iterate","Solution shared with at least one person/group","2")
+	addOption("iterate","Solution shared with multiple people/groups","3")
 	addFreeOption("iterate","4")
 	closeRow()
 
 	startRow()
-	addOption("iterate2","Minimal evidence of improvements in their solution","1")
-	addOption("iterate2","Partial evidence of improvements in their solution","2")
-	addOption("iterate2","Clear evidence of improvements in their solution","3")
+	addOption("iterate2","Minimal evidence of improvements based on feedback","1")
+	addOption("iterate2","Partial evidence of improvements based on feedback","2")
+	addOption("iterate2","Clear evidence of improvements based on feedback","3")
 	addFreeOption("iterate2","4")
 	closeRow()
 
@@ -106,27 +106,30 @@ function load2020RP() {
 
 
 	startRow()
-	addSubSection("Communicate - Team shared a creative and effective presentation of their current solution and its impact on their users.","#D2DAF1",["communicate","communicate2"])
+	addSubSection("Communicate - Team shared an effective presentation of their solution, its impact on their users, and celebrated their team's progress.","#D2DAF1",["communicate","communicate2"])
 	closeRow()
 
-	startRow()
-	addOption("communicate","Presentation minimally engaging","1")
-	addOption("communicate","Presentation partially engaging","2")
-	addOption("communicate","Presentation engaging","3")
+	startRow(bgcolor="pink")
+	addOption("communicate","Unclear explanation of the solution and its potential impact on others","1")
+	addOption("communicate","Partially clear explanation of solution and its potential impact on others","2")
+	addOption("communicate","Clear explanation of solution and its potential impact on others","3")
 	addFreeOption("communicate","4")
 	closeRow()
 
-	startRow()
-	addOption("communicate2","Solution and its potential impact on others unclear","1")
-	addOption("communicate2","Solution and its potential impact on others partially clear","2")
-	addOption("communicate2","Solution and its potential impact on others clear","3")
+	startRow(bgcolor="pink")
+	addOption("communicate2","Presentation shows minimal pride or enthusiasm for their work","1")
+	addOption("communicate2","Presentation shows partial pride or enthusiasm for their work","2")
+	addOption("communicate2","Presentation clearly shows pride or enthusiasm for their work","3")
 	addFreeOption("communicate2","4")
 	closeRow()
 
+	addToBuffer("<p style='background-color:pink'>Criteria on this page with this style of check box count dually toward Innovation Project and Core Values awards rankings</p>")
 
-	addComments("innovationProject","Feedback Comments","Great Job","Think About")
+
+	addComments("innovationProject","Innovation Project -- How did the team identify and approach solving a problem connected to the season theme","Great Job","Think About")
 
 	endRubric()
+
 
 	addToBuffer("Total Points:<text> </text><b style='color:red;' id='ippts'></b>")
 

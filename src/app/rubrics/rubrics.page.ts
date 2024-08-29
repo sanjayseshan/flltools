@@ -69,10 +69,10 @@ eval(`
               data = reader.result;
               //alert(data)
 
-              window.localStorage.DRRBSscorer = data.split('__LABEL__')[0];
-              window.localStorage.DRRBS2scorer = data.split('__LABEL__')[1];
+              window.localStorage.DRRBSMscorer = data.split('__LABEL__')[0];
+              window.localStorage.DRRBSM2scorer = data.split('__LABEL__')[1];
 
-              maximumRB = window.localStorage.DRRBSscorer.split('&&&').length - 1
+              maximumRB = window.localStorage.DRRBSMscorer.split('&&&').length - 1
 
               displayRBSaves();
           }

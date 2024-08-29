@@ -17,7 +17,7 @@
   <ion-toolbar color="">
     <ion-segment scrollable class="rbsegment">
       <ion-segment-button value="0" checked>
-        <b id="cvpts2" style="font-size:150%;color:red">0</b>
+        <b id="cvpts2" style="font-size:150%;color:red;display: none;">0</b>
         <!-- <ion-icon name="apps-outline"></ion-icon> -->
         <ion-label text-wrap>Core Values</ion-label>
       </ion-segment-button>
@@ -152,7 +152,7 @@
               <h1>Saves</h1>
 
               <ion-button type="ion-button"
-                onclick="saverRB();maximumRB = window.localStorage.DRRBSscorer.split('&&&').length-1">Save
+                onclick="saverRB();maximumRB = window.localStorage.DRRBSMscorer.split('&&&').length-1">Save
                 Rubric</ion-button>
 
               <br>
@@ -169,8 +169,8 @@
               </style>
 
               <script>
-                if (window.localStorage.DRRBSscorer != undefined) {
-                  maximumRB = window.localStorage.DRRBSscorer.split('&&&').length - 1;
+                if (window.localStorage.DRRBSMscorer != undefined) {
+                  maximumRB = window.localStorage.DRRBSMscorer.split('&&&').length - 1;
                   min = 1;
                   start = 1;
                 } else {
@@ -263,22 +263,22 @@
 
               </div>
               <ion-button text-wrap class="ui-ion-button ui-widget ui-corner-all" type="ion-button"
-                onclick="window.localStorage.DRRBSscorer = '';window.localStorage.DRRBS2scorer='';ionAlert('Deleted all Saves');displayRBSaves();">
+                onclick="window.localStorage.DRRBSMscorer = '';window.localStorage.DRRBSM2scorer='';ionAlert('Deleted all Saves');displayRBSaves();">
                 Delete all Saved Rubrics</ion-button>
 
               <div>
                 <br><br>
                 <ion-button text-wrap class="ui-mini no-mobile" onclick=" document.getElementById('fileInputRB').click() ;
-         maximumRB = window.localStorage.DRRBSscorer.split('&&&').length-1;">Import Shared Rubrics</ion-button>
+         maximumRB = window.localStorage.DRRBSMscorer.split('&&&').length-1;">Import Shared Rubrics</ion-button>
 
                 <input onchange="setTimeout(function(){
-   document.getElementById('saveidRB').max = window.localStorage.DRRBSscorer.split('&&&').length-1;},300)" style=" position: fixed;
+   document.getElementById('saveidRB').max = window.localStorage.DRRBSMscorer.split('&&&').length-1;},300)" style=" position: fixed;
 bottom: -10000px;
 left: -100000px;" type="file" accept=".DRRB" id="fileInputRB">
 <br>
 
                 <ion-button text-wrap class="ui-mini no-mobile"
-                  onclick="window.download(window.localStorage.DRRBSscorer+'__LABEL__'+window.localStorage.DRRBS2scorer, 'mysaves.DRRB','application/octet-stream')">
+                  onclick="window.download(window.localStorage.DRRBSMscorer+'__LABEL__'+window.localStorage.DRRBSM2scorer, 'mysaves.DRRB','application/octet-stream')">
                   Share Rubrics</ion-button>
 
                 <script type="text/javascript">

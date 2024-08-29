@@ -4,8 +4,8 @@ n = 0;
 score = ""
 datetime = ""
 
-if (window.localStorage.DRRBS1scorer == undefined) {
-  window.localStorage.DRRBS1scorer = ''
+if (window.localStorage.DRRBSM1scorer == undefined) {
+  window.localStorage.DRRBSM1scorer = ''
 }
 
 function getRBSaveStr() {
@@ -96,7 +96,7 @@ function loadRBsave(save) {
 // Load a localStorage getvar() var store save by id
 function loaderRB(save) {
   ionAlert(loadedText);
-  data = window.localStorage.DRRBSscorer.split('&&&')[save];
+  data = window.localStorage.DRRBSMscorer.split('&&&')[save];
   loadRBsave(String(data));
 }
 
@@ -105,7 +105,7 @@ function loaderRB(save) {
 function saverRB() {
   // Save all missions
   store = getRBSave("item");
-  window.localStorage.DRRBSscorer = window.localStorage.DRRBSscorer + '&&&' + store.join("///")
+  window.localStorage.DRRBSMscorer = window.localStorage.DRRBSMscorer + '&&&' + store.join("///")
 
   var currentTime = new Date()
   var month = currentTime.getMonth() + 1
@@ -143,7 +143,7 @@ if (hours > 12) {
   datetime = currenttime + ' ' + currentdate + '; ' + scores;
   // datetime = currentdate + ' ' + currenttime;
 
-  window.localStorage.DRRBS2scorer = window.localStorage.DRRBS2scorer + '&&&' + datetime
+  window.localStorage.DRRBSM2scorer = window.localStorage.DRRBSM2scorer + '&&&' + datetime
 
   // Save time stamp and score
   ionAlert("Saved");
@@ -153,12 +153,12 @@ if (hours > 12) {
 function displayRBSaves() {
 try{
   n = 1;
-  a = window.localStorage.DRRBS2scorer.split('&&&').length;
+  a = window.localStorage.DRRBSM2scorer.split('&&&').length;
   document.getElementById('pastRB').innerHTML = "";
-  if (window.localStorage.DRRBS2scorer != undefined && window.localStorage.DRRBS2scorer != "") {
+  if (window.localStorage.DRRBSM2scorer != undefined && window.localStorage.DRRBSM2scorer != "") {
     while (n < a) {
       //alert(n)
-      document.getElementById('pastRB').innerHTML = document.getElementById('pastRB').innerHTML + ' Rubric ' + String(n) + ': ' + window.localStorage.DRRBS2scorer.split('&&&')[n] + '<br>';
+      document.getElementById('pastRB').innerHTML = document.getElementById('pastRB').innerHTML + ' Rubric ' + String(n) + ': ' + window.localStorage.DRRBSM2scorer.split('&&&')[n] + '<br>';
       n = n + 1;
     }
   }
