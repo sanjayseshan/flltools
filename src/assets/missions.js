@@ -66,6 +66,7 @@ function load2021() {
     starttable('M02', "SHARK", 'M02.png', ['m02a','m02b'], 0)
     createbutton("m02a", 20, "If the shark is no longer touching the cave")
     createbutton("m02b", 10, "If the shark is touching the mat and it is at least partly in the shark habitat")
+    createbuttonenables("m02a","m02b")
    
     endtable()
 
@@ -111,6 +112,7 @@ function load2021() {
     starttable('M09', "UNEXPECTED ENCOUNTER", 'M09.png', ['m09a', 'm09b'], 0)
     createbutton("m09a", 20, "If the unknown creature is released")
     createbutton("m09b", 10, "If the unknown creature is at least partly in the cold seep")
+    createbuttonenables("m09a","m09b")
     endtable()
 
     starttable('M10', "SEND OVER THE SUBMERSIBLE", 'M10.png', ['m10a','m10b'], 2)
@@ -118,7 +120,6 @@ function load2021() {
     createbutton("m10b", 10, "If the submersible is clearly closer to the opposing field:")
     createcomment("Teams may not block the opposing team. It is not possible to earn the bonus in remote competitions or if there is no opposing team.")
     createcomment("No equipment may be touching any part of this mission's mission model at the end of the match, to score for this mission.")
-
     endtable()
 
     starttable('M11', "SONAR DISCOVERY", 'M11.png', ['m11a','m11b'], 0)
@@ -143,6 +144,7 @@ function load2021() {
     createbutton("m14c", 10, "If the plankton sample is no longer touching the kelp forest")
     createbutton("m14d", 20, "If a piece of the trident is no longer touching the shipwreck")
     createbutton("m14e", 10, "Bonus: If both pieces are no longer touching the shipwreck")
+    createbuttonenables("m14d","m14e")
     endtable()
 
     starttable('M15', "RESEARCH VESSEL", 'M15.png', ['m15a', 'm15b', 'm15c', 'm15d'], 2)
