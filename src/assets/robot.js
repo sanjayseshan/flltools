@@ -131,7 +131,7 @@ function load2020RD() {
 	addToBuffer("<p style='background-color:pink'>Criteria on this page with this style of check box count dually toward Innovation Project and Core Values awards rankings</p>")
 
 
-	addComments("robotDesign","Robot Design – How did the team approach solving robot game missions using building and coding?","Great Job","Think About")
+	addComments("robotDesign","Robot Design -- How did the team approach solving robot game missions using building and coding?","Great Job","Think About")
 
 	endRubric()
 
