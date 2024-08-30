@@ -52,12 +52,13 @@ function load2021() {
 
 
     starttable('A00', "EQUIPMENT INSPECTION", 'M00.png', ['m00a'], 0)
-    createbutton("m00a", 20, "If your robot and all your equipment fi t completely in one launch area and are under a height limit of 12 in. (305 mm) during the pre-match inspection")
+    createbutton("m00a", 20, "If your robot and all your equipment fit completely in one launch area and are under a height limit of 12 in. (305 mm) during the pre-match inspection")
     endtable()
 
     starttable('M01', "CORAL NURSERY", 'M01.png', ['m01a','m01b','m01c'], 1)
     createbutton("m01a", 20, "If the coral tree is hanging on on the coral tree support")
     createbutton("m01b", 10, "Bonus: and the bottom of the coral tree is in its holder")
+    createbuttonenables("m01a","m01b")
     createbutton("m01c", 20, "If the coral buds are flipped up")
     createcomment("No equipment may be touching any part of this mission's mission model at the end of the match, to score for this mission.")
     endtable()
@@ -78,6 +79,7 @@ function load2021() {
     starttable('M04', "SCUBA DIVER", 'M04.png', ['m04a', 'm04b'], 1)
     createbutton("m04a", 20, "If the scuba diver is no longer touching the coral nursery")
     createbutton("m04b", 20, "If the scuba diver is hanging on the coral reef support")
+    createbuttonenables("m04a","m04b")
     createcomment("The 'coral nursery' includes any part of the Mission 01 mission model.")
     
     endtable()
@@ -107,8 +109,8 @@ function load2021() {
     endtable()
 
     starttable('M09', "UNEXPECTED ENCOUNTER", 'M09.png', ['m09a', 'm09b'], 0)
-    createbutton("m09a", 30, "If the unknown creature is released")
-    createbutton("m09b", 10, "If the submersible is clearly closer to the opposing field")
+    createbutton("m09a", 20, "If the unknown creature is released")
+    createbutton("m09b", 10, "If the unknown creature is at least partly in the cold seep")
     endtable()
 
     starttable('M10', "SEND OVER THE SUBMERSIBLE", 'M10.png', ['m10a','m10b'], 2)
@@ -122,6 +124,7 @@ function load2021() {
     starttable('M11', "SONAR DISCOVERY", 'M11.png', ['m11a','m11b'], 0)
     createbutton("m11a", 20, "If one whale is revealed")
     createbutton("m11b", 10, "Bonus: If both whales are revealed")
+    createbuttonenables("m11a","m11b")
     endtable()
 
     starttable('M12', "FEED THE WHALE", 'M12.png', ['m12a'], 1)
@@ -147,7 +150,7 @@ function load2021() {
     createrange("m15a", 5, 0, 3, 0, "Each sample", '')
     createrange("m15b", 5, 0, 2, 0, "Trident Part(s)", '')
     createbutton("m15c", 5, "Treasure Chest")
-    createbutton("m15d", 10, "If the port's latch is at least partly in the research vessel's loop")
+    createbutton("m15d", 20, "If the port's latch is at least partly in the research vessel's loop")
     createcomment("No equipment may be touching any part of this mission's mission model at the end of the match, to score for this mission.")
 
     endtable()
