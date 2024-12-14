@@ -49,6 +49,7 @@ jobs:
           npm install
           npm install @ionic/angular@6.7.5
           ionic build 
+          cp www/index.html www/404.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
