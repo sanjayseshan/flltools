@@ -49,11 +49,10 @@ jobs:
           npm install
           npm install -g ionic@6.0.0
           ionic build 
-
       - name: Upload artifact
-          uses: actions/upload-pages-artifact@v3
-          with:
-            path: ./www
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./www
 
   # Deployment job
   deploy:
