@@ -100,13 +100,13 @@
                 <ul class="tab">
                     <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'InfoPG')"
                             id="defaultOpen">Core Content</a></li>
-                    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'ScorerPG')">Scorer</a>
+                    <!-- <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'ScorerPG')">Scorer</a>
                     </li>
                     <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'RubricsPG')">Rubrics</a>
-                    </li>
+                    </li> -->
                     <!-- <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'ExplorePG')">FLL Explore</a>
                     </li> -->
-                    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'BasicPG')">Strategy Planner</a></li>
+                    <!-- <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'BasicPG')">Strategy Planner</a></li> -->
                 </ul>
             </div>
         </div>
@@ -121,7 +121,7 @@
                 <td width="60%">Translation</td>
             </tr>
             <script>
-                info = getMainDict("info")
+                info = getMainDict("/assets/translations/fr")
                 dict = info
                 var keys = Object.keys(dict);
                 for (i = 0; i < keys.length; i++) {
@@ -138,7 +138,7 @@
             </script>
         </table>
     </div>
-    <div id="BasicPG" class="tabcontent">
+    <!-- <div id="BasicPG" class="tabcontent">
 
         <h3>Strategy Planner & Miscellaneous Content</h3>
         <table border=1 width="100%">
@@ -216,7 +216,7 @@
                 }
             </script>
         </table>
-    </div>
+    </div> -->
     <!-- <div id="ExplorePG" class="tabcontent">
         <h3>FLL Explore Review Sheet</h3>
         <table border=1 width="100%">
@@ -245,9 +245,9 @@
     <script>
         fulldict = {}
         Object.keys(info).forEach(key => fulldict[key] = info[key]);
-        Object.keys(basic).forEach(key => fulldict[key] = basic[key]);
-        Object.keys(scorer).forEach(key => fulldict[key] = scorer[key]);
-        Object.keys(rubrics).forEach(key => fulldict[key] = rubrics[key]);
+        // Object.keys(basic).forEach(key => fulldict[key] = basic[key]);
+        // Object.keys(scorer).forEach(key => fulldict[key] = scorer[key]);
+        // Object.keys(rubrics).forEach(key => fulldict[key] = rubrics[key]);
         // Object.keys(explore).forEach(key => fulldict[key] = explore[key]);
         var fullkeys = Object.keys(fulldict);
 
