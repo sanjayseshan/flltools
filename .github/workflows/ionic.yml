@@ -45,9 +45,9 @@ jobs:
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Build
         run: |
-          npm install -g ionic@6.0.0
+          npm install -g ionic
           npm install
-          npm install -g ionic@6.0.0
+          npm install ionic/angular@6.7.5
           ionic build 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
